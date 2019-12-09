@@ -32,13 +32,18 @@ CREATE TABLE Location (
 	-- hours/days open
 	Latitude	decimal(9,6),
 	Longitude	decimal(9,6),
-	Category	int NOT NULL,
 	Address		nvarchar(100),
 	Image		nvarchar(1000),
 	PhoneNum	nvarchar(20),
 	PriceLevel	int,
 	WebsiteURL	nvarchar(1000),
-	CONSTRAINT FK_Location_Category FOREIGN KEY (Category) REFERENCES Category(Id)
+);
+
+CREATE TABLE Location_Category (
+	Location_Id int NOT NULL,
+	Category_Id int NOT NULL,
+	CONSTRAINT FK_Location_Category FOREIGN KEY (Location_Id) REFERENCES Location(Id),
+	CONSTRAINT FK_Location_Category FOREIGN KEY (Category_Id) REFERENCES Category(Id)
 );
 
 CREATE TABLE Users (
@@ -61,8 +66,8 @@ CREATE TABLE CheckIn (
 CREATE TABLE UserBadge (
 	UserId int NOT NULL,
 	BadgeId int NOT NULL,
-	CONSTRAINT FK_CheckIn_User FOREIGN KEY (UserId) REFERENCES Users(Id),
-	CONSTRAINT FK_CheckIn_Badge FOREIGN KEY (BadgeId) REFERENCES Badge(Id)
+	CONSTRAINT FK_UserBadge_Users FOREIGN KEY (UserId) REFERENCES Users(Id),
+	CONSTRAINT FK_UserBadge_Badge FOREIGN KEY (BadgeId) REFERENCES Badge(Id)
 );
 
 
