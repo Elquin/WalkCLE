@@ -26,7 +26,7 @@ CREATE TABLE Badge (
 
 CREATE TABLE Location (
 	Id			int IDENTITY(1,1) PRIMARY KEY,
-	Name		nvarchar(30) NOT NULL,
+	Name		nvarchar(50) NOT NULL,
 	ShortDesc	nvarchar(40),
 	LongDesc	nvarchar(1000),
 	-- hours/days open
