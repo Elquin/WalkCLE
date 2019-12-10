@@ -85,7 +85,7 @@ namespace SampleApi
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
+            services.AddSingleton<LocationSqlDAO, LocationSqlDAO>();
             // Configure automatic model state validation
             // This prevents us from having to manually check model state in each action.
             services.Configure<ApiBehaviorOptions>(options =>
