@@ -4,6 +4,7 @@ import auth from './auth'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Register from './views/Register.vue'
+import NearbyLocations from './views/NearbyLocations.vue'
 
 Vue.use(Router)
 
@@ -40,6 +41,14 @@ const router = new Router({
       path: "/register",
       name: "register",
       component: Register,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/NearbyLocations",
+      name: "NearbyLocations",
+      component: NearbyLocations,
       meta: {
         requiresAuth: false
       }
