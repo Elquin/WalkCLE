@@ -98,13 +98,44 @@ where Location.Name = @locationName";
 
                     SqlDataReader reader = cmd.ExecuteReader();
                     reader.Read();
-                    return MapRowToLocation(reader);
+                    location =  MapRowToLocation(reader);
                 }
             }
             catch (SqlException ex)
             {
                 throw ex;
             }
+
+            // mapping the multiple categories to a single location
+            try
+            {
+                
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string getCategoriesSql = @"select *, Category.Name as 'category_name' from Location
+join Location_Category on Location_Category.Location_Id = Location.Id
+join Category on Location_Category.Category_Id = Category.Id
+where Location.Name = @locationName";
+
+                    SqlCommand cmd = new SqlCommand(getCategoriesSql, connection);
+                    cmd.Parameters.AddWithValue("@locationName", location.Name);
+                    location.Categories = new List<string>();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        location.Categories.Add(Convert.ToString(reader["category_name"]));
+                    }
+                }
+                
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+
+            return location;
         }
 
         private Location MapRowToLocation(SqlDataReader reader)
