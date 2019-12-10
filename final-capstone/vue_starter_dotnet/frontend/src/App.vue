@@ -2,8 +2,8 @@
   <div id="app">
     <locations-search v-on:filter-locations="handleSearch"></locations-search>
     <div id="nav">
-      <router-link :to="{ name: 'home' }" tag="li" exact>>Home</router-link>
-      <router-link :to="{ name: 'NearbyLocations' }" tag="li" exact>>NearbyLocations</router-link>
+      <router-link class="icons" :to="{ name: 'home' }" exact><img src="@/assets/user.png"/></router-link>
+      <router-link class="icons" :to="{ name: 'NearbyLocations' }" exact><img src="@/assets/trophy.png"/></router-link>
     </div>
     <router-view class="content"/>
     <div id="silhouette">
@@ -38,5 +38,14 @@ export default {
     left: 0;
     right: 0;
     z-index: -100;
+  }
+
+  #nav {
+    margin-top: 40px;
+    text-align: right;
+  }
+
+  #nav .icons {
+    display: block;
   }
 </style>
