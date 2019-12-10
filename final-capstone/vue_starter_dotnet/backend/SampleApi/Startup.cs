@@ -81,11 +81,12 @@ namespace SampleApi
             // Dependency Injection configuration
             services.AddSingleton<ITokenGenerator>(tk => new JwtGenerator(Configuration["JwtSecret"]));
             services.AddSingleton<IPasswordHasher>(ph => new PasswordHasher());
-            services.AddTransient<IUserDAO>(m => new UserSqlDAO(Configuration.GetConnectionString("Default")));
-
+            services.AddTransient<IUserDAO>(m => new UserSqlDAO(Configuration.GetConnectionString("WalkCLE")));
+            services.AddTransient<ILocationDAO>(m => new LocationSqlDAO(Configuration.GetConnectionString("WalkCLE")));
+            
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddSingleton<LocationSqlDAO, LocationSqlDAO>();
+            //services.AddSingleton<LocationSqlDAO, LocationSqlDAO>();
             // Configure automatic model state validation
             // This prevents us from having to manually check model state in each action.
             services.Configure<ApiBehaviorOptions>(options =>
