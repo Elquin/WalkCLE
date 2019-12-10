@@ -23,7 +23,7 @@ namespace SampleApi.Tests.DAL
             this.transaction = new TransactionScope();
             string script;
             // Load a script file to setup the db the way we want it
-            using (StreamReader sr = new StreamReader("test_setup.sql"))
+            using (StreamReader sr = new StreamReader("../../../DAL/test_setup.sql"))
             {
                 script = sr.ReadToEnd();
             }
@@ -57,6 +57,8 @@ namespace SampleApi.Tests.DAL
             Assert.AreEqual(1, list.Count);
         }
 
+        //[TestMethod]
+        //public void Return_One_Location_Details
 
 
 
