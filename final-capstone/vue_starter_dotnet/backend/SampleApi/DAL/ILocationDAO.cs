@@ -9,6 +9,6 @@ namespace SampleApi.DAL
     public interface ILocationDAO
     {
         List<Location> GetAllLocations();
-        Location GetLocation();
+        Location GetLocation(int id);
     }
 }

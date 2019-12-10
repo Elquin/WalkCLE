@@ -18,11 +18,11 @@ namespace SampleApi.Models
 
         public string LongDescription { get; set; }
 
-        public int Latitude { get; set; }
+        public decimal Latitude { get; set; }
 
-        public int Longitude { get; set; }
+        public decimal Longitude { get; set; }
 
-        public string Category { get; set; }
+        public int Category { get; set; }
 
         public string Address { get; set; }
 
