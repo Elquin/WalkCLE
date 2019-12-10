@@ -20,7 +20,7 @@ namespace SampleApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [Authorize]
+        //[Authorize]
         public IActionResult Get()
         {
             var result = $"Welcome back {User.Identity.Name}";

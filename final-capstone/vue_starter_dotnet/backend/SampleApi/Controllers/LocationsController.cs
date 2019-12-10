@@ -12,8 +12,8 @@ namespace SampleApi.Controllers
     [ApiController]
     public class LocationsController : Controller
     {
-        private LocationSqlDAO dao;
-        public LocationsController(LocationSqlDAO dao)
+        private ILocationDAO dao;
+        public LocationsController(ILocationDAO dao)
         {
             this.dao = dao;
         }
