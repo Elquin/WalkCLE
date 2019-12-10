@@ -57,8 +57,21 @@ namespace SampleApi.Tests.DAL
             Assert.AreEqual(1, list.Count);
         }
 
-        //[TestMethod]
-        //public void Return_One_Location_Details
+        [TestMethod]
+        public void Return_One_Location_Details()
+        {
+            //Arrange
+            LocationSqlDAO dao = new LocationSqlDAO(connectionString);
+
+            //Act
+            Location test = dao.GetLocation(1);
+            string actualResult = test.Name;
+
+            //Assert
+            Assert.AreEqual(actualResult, "Test Location");
+
+
+        }
 
 
 

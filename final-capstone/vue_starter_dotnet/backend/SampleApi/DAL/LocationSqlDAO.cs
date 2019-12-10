@@ -87,7 +87,6 @@ namespace SampleApi.DAL
                 LongDescription = Convert.ToString(reader["LongDesc"]),
                 Latitude = Convert.ToDecimal(reader["Latitude"]),
                 Longitude = Convert.ToDecimal(reader["Longitude"]),
-                //Category = Convert.ToInt32(reader["Category"]),
                 Address = Convert.ToString(reader["Address"]),
                 Image = Convert.ToString(reader["Image"]),
                 PhoneNumber = Convert.ToString(reader["PhoneNum"]),
