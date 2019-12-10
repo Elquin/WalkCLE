@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <list-locations></list-locations>
     <locations-search v-on:filter-locations="handleSearch"></locations-search>
     <div id="nav">
       <router-link class="icons" :to="{ name: 'home' }" exact><img src="@/assets/user.png"/></router-link>
@@ -13,13 +14,14 @@
 </template>
 
 <script>
-import LocationsSearch from '@/components/LocationsSearch';
+import LocationsSearch from '@/components/LocationsSearch.vue';
+import ListLocations from '@/components/ListLocations.vue';
 
 export default {
   name: 'app',
   components: {
       LocationsSearch,
-      
+      ListLocations
   },
   methods: {
       handleSearch(query) {
