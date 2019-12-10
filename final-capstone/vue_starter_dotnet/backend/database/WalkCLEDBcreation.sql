@@ -44,8 +44,8 @@ CREATE TABLE Location (
 CREATE TABLE Location_Category (
 	Location_Id int NOT NULL,
 	Category_Id int NOT NULL,
-	CONSTRAINT FK_Location_Category FOREIGN KEY (Location_Id) REFERENCES Location(Id),
-	CONSTRAINT FK_Location_Category FOREIGN KEY (Category_Id) REFERENCES Category(Id)
+	CONSTRAINT FK_Location_Category_Loc FOREIGN KEY (Location_Id) REFERENCES Location(Id),
+	CONSTRAINT FK_Location_Category_Cat FOREIGN KEY (Category_Id) REFERENCES Category(Id)
 );
 
 CREATE TABLE Users (
@@ -53,9 +53,7 @@ CREATE TABLE Users (
 	Username	nvarchar(50) NOT NULL,
 	Password	nvarchar(50) NOT NULL,
 	Salt		nvarchar(50) NOT NULL,
-	Role		nvarchar(50) DEFAULT('user'),
-	FirstName	nvarchar(20),
-	LastName	nvarchar(20)
+	Role		nvarchar(50) DEFAULT('user')
 );
 
 CREATE TABLE CheckIn (
