@@ -31,7 +31,9 @@ CREATE TABLE Location (
 	LongDesc	nvarchar(1000),
 	-- hours/days open
 	Latitude	decimal(9,6),
+	LatitudeHemi nvarchar(1),
 	Longitude	decimal(9,6),
+	LongitudeHemi nvarchar(1),
 	Address		nvarchar(100),
 	Image		nvarchar(1000),
 	PhoneNum	nvarchar(20),
@@ -70,6 +72,33 @@ CREATE TABLE UserBadge (
 	CONSTRAINT FK_UserBadge_Badge FOREIGN KEY (BadgeId) REFERENCES Badge(Id)
 );
 
+INSERT category (Name) VALUES ("Museum")
+INSERT category (Name) VALUES ("Garden")
+INSERT category (Name) VALUES ("Art Gallery")
+INSERT category (Name) VALUES ("Zoo")
+INSERT category (Name) VALUES ("Wildlife")
+INSERT category (Name) VALUES ("Aquarium")
+INSERT category (Name) VALUES ("Memorial")
+INSERT category (Name) VALUES ("Historic Place")
+INSERT category (Name) VALUES ("Architecture")
+INSERT cateogry (Name) VALUES ("Sculpture")
+INSERT category (Name) VALUES ("Unusual Attraction")
+INSERT category (Name) VALUES ("Tour")
 
-
+INSERT location (Name, ShortDesc, LongDesc, Latitude, Longitude, Address, Image, PhoneNum, PriceLevel, WebsiteURL) VALUES ('Cleveland Museum of Natural History', 'Museum of the natural world', 'Their mission is to inspire, through science and education, a passion for nature, the protection of natural diversity, the fostering of health and leadership to a sustainable future.', 41.51135, 'N', -81.6136, 'E', '1 Wade Oval Drive', '', '(216) 231-4600', '', 'https://www.cmnh.org/')
+INSERT location (Name, ShortDesc, LongDesc, Latitude, Longitude, Address, Image, PhoneNum, PriceLevel, WebsiteURL) VALUES ('Great Lakes Science Center', 'Interactive Science Museum', 'Their mission is to inspire, through science and education, a passion for nature, the protection of natural diversity, the fostering of health and leadership to a sustainable future.', 41.51135, 'N', -81.6136, 'E', '601 Erieside Ave', '', '(216) 694-2000', '', 'http://greatscience.com/')
+INSERT location (Name, ShortDesc, LongDesc, Latitude, Longitude, Address, Image, PhoneNum, PriceLevel, WebsiteURL) VALUES ('Cleveland Botanical Garden', 'Botanical Gardens', 'Their mission is to inspire, through science and education, a passion for nature, the protection of natural diversity, the fostering of health and leadership to a sustainable future.', 41.51135, 'N', -81.6136, 'E', '11030 E Blvd', '', '(216) 721-1600', '', 'https://cbgarden.org/')
+INSERT location (Name, ShortDesc, LongDesc, Latitude, Longitude, Address, Image, PhoneNum, PriceLevel, WebsiteURL) VALUES ('A Christmas Story House', 'Movie Location', 'Their mission is to inspire, through science and education, a passion for nature, the protection of natural diversity, the fostering of health and leadership to a sustainable future.', 41.51135, 'N', -81.6136, 'E', '3159 W 11th St', '', '3159 W 11th St', '', 'https://www.achristmasstoryhouse.com/')
+INSERT location (Name, ShortDesc, LongDesc, Latitude, Longitude, Address, Image, PhoneNum, PriceLevel, WebsiteURL) VALUES ('Cleveland Museum of Art', 'Art Museum', 'Their mission is to inspire, through science and education, a passion for nature, the protection of natural diversity, the fostering of health and leadership to a sustainable future.', 41.51135, 'N', -81.6136, 'E', '11150 East Blvd', '', '(216) 421-7350', '', 'https://www.clevelandart.org/')
+INSERT location (Name, ShortDesc, LongDesc, Latitude, Longitude, Address, Image, PhoneNum, PriceLevel, WebsiteURL) VALUES ('Cleveland Metroparks Zoo', 'Zoo', 'Their mission is to inspire, through science and education, a passion for nature, the protection of natural diversity, the fostering of health and leadership to a sustainable future.', 41.51135, 'N', -81.6136, 'E', '3900 Wildlife Way', '', '(216) 661-6500', '', 'https://www.clevelandmetroparks.com/zoo')
+INSERT location (Name, ShortDesc, LongDesc, Latitude, Longitude, Address, Image, PhoneNum, PriceLevel, WebsiteURL) VALUES ('Greater Cleveland Aquarium', 'Aquarium', 'Their mission is to inspire, through science and education, a passion for nature, the protection of natural diversity, the fostering of health and leadership to a sustainable future.', 41.51135, 'N', -81.6136, 'E', '2000 Sycamore St', '', '(216) 862-8803', '', 'https://www.greaterclevelandaquarium.com/')
+INSERT location (Name, ShortDesc, LongDesc, Latitude, Longitude, Address, Image, PhoneNum, PriceLevel, WebsiteURL) VALUES ('James A. Garfield Memorial', 'Monument', 'Their mission is to inspire, through science and education, a passion for nature, the protection of natural diversity, the fostering of health and leadership to a sustainable future.', 41.51135, 'N', -81.6136, 'E', '1534 S Green Rd', '', '(216) 381-2953', '', 'https://garfieldchurch.org/')
+INSERT location (Name, ShortDesc, LongDesc, Latitude, Longitude, Address, Image, PhoneNum, PriceLevel, WebsiteURL) VALUES ('Rock & Roll Hall of Fame and Museum', 'Museum of Rock & Roll', 'Their mission is to inspire, through science and education, a passion for nature, the protection of natural diversity, the fostering of health and leadership to a sustainable future.', 41.51135, 'N', -81.6136, 'E', '1100 Rock And Roll Blvd', '', '(216) 781-7625', '', 'https://www.rockhall.com/')
+INSERT location (Name, ShortDesc, LongDesc, Latitude, Longitude, Address, Image, PhoneNum, PriceLevel, WebsiteURL) VALUES ('Cleveland History Center', 'Museum of Cleveland', 'Their mission is to inspire, through science and education, a passion for nature, the protection of natural diversity, the fostering of health and leadership to a sustainable future.', 41.51135, 'N', -81.6136, 'E', '10825 East Blvd', '', '(216) 721-5722', '', 'https://www.wrhs.org/')
+INSERT location (Name, ShortDesc, LongDesc, Latitude, Longitude, Address, Image, PhoneNum, PriceLevel, WebsiteURL) VALUES ('Terminal Tower', 'Clevelands Signature landmark', 'Their mission is to inspire, through science and education, a passion for nature, the protection of natural diversity, the fostering of health and leadership to a sustainable future.', 41.51135, 'N', -81.6136, 'E', '50 Public Sq', '', '(216) 621-6060', '', '')
+INSERT location (Name, ShortDesc, LongDesc, Latitude, Longitude, Address, Image, PhoneNum, PriceLevel, WebsiteURL) VALUES ('Steamship William G. Mather Maritime Museum', 'Ore Boat Museum', 'Their mission is to inspire, through science and education, a passion for nature, the protection of natural diversity, the fostering of health and leadership to a sustainable future.', 41.51135, 'N', -81.6136, 'E', '1001 E 9th St, North Coast Harbor Park', '', '(216) 574-6262', '', '')
+INSERT location (Name, ShortDesc, LongDesc, Latitude, Longitude, Address, Image, PhoneNum, PriceLevel, WebsiteURL) VALUES ('Soldiers and Sailors Monument', 'Monument', 'Their mission is to inspire, through science and education, a passion for nature, the protection of natural diversity, the fostering of health and leadership to a sustainable future.', 41.51135, 'N', -81.6136, 'E', '3 Public Sq', '', '(216) 621-3710', '', 'http://www.soldiersandsailors.com/')
+INSERT location (Name, ShortDesc, LongDesc, Latitude, Longitude, Address, Image, PhoneNum, PriceLevel, WebsiteURL) VALUES ('Playhouse Square', 'Outdoor Chandelier', 'Their mission is to inspire, through science and education, a passion for nature, the protection of natural diversity, the fostering of health and leadership to a sustainable future.', 41.51135, 'N', -81.6136, 'E', '1501 Euclid Ave Ste 200', '', '1501 Euclid Ave Ste 200', '', 'https://theatrecleveland.com/')
+INSERT location (Name, ShortDesc, LongDesc, Latitude, Longitude, Address, Image, PhoneNum, PriceLevel, WebsiteURL) VALUES ('USS Cod Submarine', 'WWII Submarine Museum', 'Their mission is to inspire, through science and education, a passion for nature, the protection of natural diversity, the fostering of health and leadership to a sustainable future.', 41.51135, 'N', -81.6136, 'E', ' 1201 N Marginal Rd', '', ' 1201 N Marginal Rd', '', 'http://usscod.org/')
+INSERT location (Name, ShortDesc, LongDesc, Latitude, Longitude, Address, Image, PhoneNum, PriceLevel, WebsiteURL) VALUES ('Federal Reserve Bank of Cleveland', 'Money Museum', 'Their mission is to inspire, through science and education, a passion for nature, the protection of natural diversity, the fostering of health and leadership to a sustainable future.', 41.51135, 'N', -81.6136, 'E', '1455 E 6th St', '', '(216) 579-2000', '', 'https://www.clevelandfed.org/')
 
