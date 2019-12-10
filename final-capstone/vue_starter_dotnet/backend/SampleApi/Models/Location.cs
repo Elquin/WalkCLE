@@ -22,7 +22,7 @@ namespace SampleApi.Models
 
         public decimal Longitude { get; set; }
 
-        public int Category { get; set; }
+        public List<string> Categories { get; set; }
 
         public string Address { get; set; }
 
