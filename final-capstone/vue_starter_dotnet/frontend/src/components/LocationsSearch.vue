@@ -1,7 +1,7 @@
 <template>
     <div class="wrap">
    <div class="search">
-      <input type="text" class="searchTerm" placeholder="What are you looking for?">
+      <input type="text" class="searchTerm" placeholder="Please enter a location name or description...">
       <button type="submit" class="searchButton">🔍
         <i class="fa fa-search"></i>
      </button>
@@ -64,7 +64,7 @@ body{
 /*Resize the wrap to see the search bar change!*/
 .wrap{
   width: 100%;
-  position: absolute;
+  position: fixed;
   top: 0%;
   left: 50%;
   transform: translate(-50%, -50%);
