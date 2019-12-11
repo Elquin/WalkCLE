@@ -43,6 +43,7 @@ export default {
   #nav {
     margin-top: 40px;
     text-align: right;
+    position: fixed;
   }
 
   #nav .icons {
