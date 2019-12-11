@@ -36,6 +36,7 @@ export default {
 <style scoped>
   #app {
     margin-top: 40px;
+    z-index: -101
   }
 
   #silhouette img {

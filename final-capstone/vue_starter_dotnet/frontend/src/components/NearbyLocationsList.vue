@@ -4,7 +4,8 @@
           <li v-for="location in locationsList" v-bind:key="location.name">
             <img src="@/assets/trophy.png"/>
               <h3>{{location.name}}</h3>
-              <p>{{location.shortdesc}}</p><p>{{location.address}}</p>
+              <p>{{location.shortDesc}}</p>
+              <p>{{location.address}}</p>
           </li>
       </ul>
   </div>
@@ -53,7 +54,7 @@ export default {
     
     ul {
       list-style-type: none;
-      width: 500px;
+      width: 550px;
       margin: auto;
     }
     
