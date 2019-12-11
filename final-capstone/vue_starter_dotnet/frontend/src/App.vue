@@ -1,7 +1,5 @@
 <template>
   <div id="app">
-    <router-view></router-view>
-    <!-- <register></register>
     <list-locations></list-locations>
     <locations-search v-on:filter-locations="handleSearch"></locations-search>
     <div id="nav">

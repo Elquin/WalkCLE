@@ -1,5 +1,12 @@
 <template>
-<div></div>
+<div>
+    <ul>
+        <li v-for="location in locationsList" v-bind:key="location.name">
+            <p>{{location.name}}</p>
+            <p>{{location.address}}</p>
+        </li>
+    </ul>
+</div>
 </template>
 
 <script>
@@ -15,7 +22,7 @@ export default {
     },
     methods: {
         fetchLocations(){
-            fetch(`https://localhost:44392/api/locations`).then(
+            fetch(`${process.env.VUE_APP_REMOTE_API}/locations`).then(
                 (resp) => {
                 if (resp.ok) {
                     resp.json().then(
@@ -39,5 +46,7 @@ export default {
 </script>
 
 <style scoped>
-
+    div{
+        margin-top: 300px;
+    }
 </style>
