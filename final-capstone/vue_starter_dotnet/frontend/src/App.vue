@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <router-view></router-view>
+    <!-- <register></register>
     <list-locations></list-locations>
     <locations-search v-on:filter-locations="handleSearch"></locations-search>
     <div id="nav">
@@ -9,19 +11,21 @@
     <router-view class="content"/>
     <div id="silhouette">
         <img src="@/assets/silhouette.png"/>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import LocationsSearch from '@/components/LocationsSearch.vue';
 import ListLocations from '@/components/ListLocations.vue';
+import Register from '@/views/Register.vue';
 
 export default {
   name: 'app',
   components: {
       LocationsSearch,
-      ListLocations
+      ListLocations,
+      Register
   },
   methods: {
       handleSearch(query) {

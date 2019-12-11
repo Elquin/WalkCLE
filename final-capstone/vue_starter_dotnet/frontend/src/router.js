@@ -26,7 +26,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: false /*Set to false for testing*/
+        requiresAuth: true /*Set to false for testing*/
       }
     },
     {
