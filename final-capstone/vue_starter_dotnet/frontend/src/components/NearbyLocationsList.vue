@@ -1,13 +1,17 @@
 <template>
-  <div class="nearbylocations-list">
-      <ul>
-          <li v-for="location in locationsList" v-bind:key="location.name">
-            <img src="@/assets/trophy.png"/>
-              <h3>{{location.name}}</h3>
-              <p>{{location.shortDescription}}</p>
-              <p>{{location.address}}</p>
-          </li>
-      </ul>
+  <div class="flex-container">
+    <div class="flex-section" v-for="location in locationsList" v-bind:key="location.name">
+      <div class="flex-image"><img src="@/assets/trophy.png"/></div>
+        <div class="flex-details">
+          <ul>
+              <li>
+                  <h3>{{location.name}}</h3>
+                  <p>{{location.shortDescription}}</p>
+                  <p>{{location.address}}</p>
+              </li>
+          </ul>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -48,7 +52,18 @@ export default {
 </script>
 
 <style scoped>
-    div {
+    .flex-container {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .flex-section {
+      flex-basis: 100px;
+    }
+
+
+
+    /* div {
       margin: 20px;
     }
     
@@ -82,7 +97,7 @@ export default {
     li:hover {
       background: #eee;
       cursor: pointer;
-    }
+    } */
 </style>
 
 
