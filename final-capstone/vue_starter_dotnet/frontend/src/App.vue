@@ -8,7 +8,7 @@
     </div>
     <router-view class="content"/>
     <div id="silhouette">
-        <img src="@/assets/silhouette.png"/>
+        <img src="@/assets/silhouette.svg"/>
     </div>
   </div>
 </template>
@@ -45,10 +45,20 @@ export default {
   #nav {
     margin-top: 40px;
     text-align: right;
-    position: fixed;
+    position:fixed; right:10px; top:10px;
   }
 
   #nav .icons {
     display: block;
+    
   }
+
+  #nav img {
+      width: 10%;
+    }
+
+  #nav img:hover {
+    opacity: 60%;
+  }
+
 </style>

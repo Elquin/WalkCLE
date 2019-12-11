@@ -1,7 +1,7 @@
 <template>
     <div class="wrap">
    <div class="search">
-      <input type="text" class="searchTerm" placeholder="What are you looking for?">
+      <input type="text" class="searchTerm" placeholder="Please enter a location name or description...">
       <button type="submit" class="searchButton">🔍
         <i class="fa fa-search"></i>
      </button>
