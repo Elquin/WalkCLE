@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <list-locations></list-locations>
     <locations-search v-on:filter-locations="handleSearch"></locations-search>
     <div id="nav">
       <router-link class="icons" :to="{ name: 'home' }" exact><img src="@/assets/user.png"/></router-link>
@@ -15,14 +14,14 @@
 
 <script>
 import LocationsSearch from '@/components/LocationsSearch.vue';
-import ListLocations from '@/components/ListLocations.vue';
+import NearbyLocationsList from '@/components/NearbyLocationsList.vue';
 import Register from '@/views/Register.vue';
 
 export default {
   name: 'app',
   components: {
       LocationsSearch,
-      ListLocations,
+      NearbyLocationsList,
       Register
   },
   methods: {
@@ -35,6 +34,11 @@ export default {
 </script>
 
 <style scoped>
+  #app {
+    margin-top: 40px;
+    z-index: -101
+  }
+
   #silhouette img {
     width: 100%;
     position: fixed;
