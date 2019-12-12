@@ -3,7 +3,7 @@
     <locations-search v-on:filter-locations="handleSearch"></locations-search>
     <div id="nav">
       <router-link class="icons" :to="{ name: 'home' }" exact><img src="@/assets/logoIcon.png"/></router-link>
-      <router-link class="icons" :to="{ name: 'login' }" exact><img src=@/assets/user.png/></router-link>
+      <router-link class="icons" :to="{ name: 'profile' }" exact><img src=@/assets/user.png/></router-link>
       <router-link class="icons" :to="{ name: 'NearbyLocations' }" exact><img src="@/assets/gpsButton.png"/></router-link>
     </div>
     <router-view class="content"/>
@@ -19,6 +19,7 @@ import NearbyLocationsList from '@/components/NearbyLocationsList.vue';
 import Register from '@/views/Register.vue';
 import Login from '@/views/Login.vue';
 import Details from '@/components/Details.vue';
+import Profile from '@/views/Profile.vue';
 
 export default {
   name: 'app',
