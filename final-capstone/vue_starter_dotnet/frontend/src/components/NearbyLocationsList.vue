@@ -1,16 +1,15 @@
 <template>
-  <div class="grid-wrapper">
-    <div class="grid-card" v-for="location in locationsList" v-bind:key="location.name">
-      <div class="grid-image"><img src="@/assets/trophy.png"/></div>
-        <div class="grid-details">
+  <div class="flex-container">
+    <div class="flex-item" v-for="location in locationsList" v-bind:key="location.name">
+      <div class="location-image"><img src="@/assets/location-image.jpg"/></div>
           <ul>
               <li>
+                  
                   <h3>{{location.name}}</h3>
                   <p>{{location.shortDescription}}</p>
                   <p>{{location.address}}</p>
               </li>
           </ul>
-        </div>
     </div>
   </div>
 </template>
@@ -83,29 +82,39 @@ export default {
 
 <style scoped>
 
-    .grid-wrapper {
-      width: 50%;
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-areas:
-        "card";
+    .flex-container {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
     }
 
-    .grid-card {
-      grid-area: card;
-      display: grid;
-      grid-template-columns: 1fr 6fr;
-      grid-template-areas:
-        "image details";
+    .flex-item {
+      background-color: white;
+      width: 40%;
+      display: flex;
+      box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
     }
 
-    .grid-image {
-      grid-area: image;
+    .flex-item:hover {
+      background-color: rgb(235, 235, 235);
     }
 
-    .grid-details {
-      grid-area: details;
+    .flex-item ul {
+      list-style-type: none;
+      width: 60%;
+      padding-left: 0px;
+    }
+
+    .location-image{
+      width: 40%;
+      padding: 20px;
+    }
+
+    .location-image img {
+      width: 100%;
+      height: auto;
+      box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
+      
     }
 
 
