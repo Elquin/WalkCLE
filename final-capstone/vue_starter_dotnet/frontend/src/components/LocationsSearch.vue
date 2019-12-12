@@ -1,7 +1,7 @@
 <template>
     <div class="wrap">
    <div class="search">
-      <input type="text" class="searchTerm" placeholder="Please enter a location name or description...">
+      <input type="text" class="searchTerm" v-on:keyup='filterLocations' placeholder="Please enter a location name or description...">
       <button type="submit" class="searchButton">🔍
         <i class="fa fa-search"></i>
      </button>
@@ -11,10 +11,20 @@
 
 <script>
 export default {
+      search: '',
+      name: 'list-locations',
+    data(){
+        return {
+            locationsList: []
+        }
+    },
+    created() {
+        this.filterLocations()
+    },
     methods: {
-        filterTasks() {
-            const query = document.getElementById('search').value;
-            this.$emit('filter-tasks', query);
+        filterLocations(){
+          const query = document.getElementById('search').value;
+          this.$emit('filter-locations', query);
         }
     }
 }

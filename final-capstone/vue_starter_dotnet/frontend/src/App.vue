@@ -27,9 +27,15 @@ export default {
       Register,
       Login
   },
+    data() {
+    return {
+      search: ''
+    }
+  },
+
   methods: {
       handleSearch(query) {
-          console.log('Filter Tasks: ', query);
+          console.log('Filter Locations: ', query);
           this.search = query;
       }
   }
