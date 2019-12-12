@@ -15,3 +15,15 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+
+.nearbylocations > h1{
+    text-align: center;
+    margin: auto;
+    left: 0;
+    right: 0;
+    width: 650px;
+}
+
+</style>

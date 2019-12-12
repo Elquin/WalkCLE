@@ -71,7 +71,7 @@ body{
   font-size: 20px;
 }
 
-/*Resize the wrap to see the search bar change!*/
+/*Resize the wrap to set search width*/
 .wrap{
   width: 100%;
   position: fixed;
