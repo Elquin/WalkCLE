@@ -11909,23 +11909,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\KPartezana\\.nuget\\packages\\": {},
+    "C:\\Users\\RHolland\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\KPartezana\\Git\\c-final-capstone-walkcle-team-bling\\final-capstone\\Sample_Projects\\te-snippets\\backend\\dotnet\\TeSnippets\\TeSnippets.csproj",
+      "projectUniqueName": "C:\\Users\\RHolland\\git\\c-final-capstone-walkcle-team-bling\\final-capstone\\Sample_Projects\\te-snippets\\backend\\dotnet\\TeSnippets\\TeSnippets.csproj",
       "projectName": "TeSnippets",
-      "projectPath": "C:\\Users\\KPartezana\\Git\\c-final-capstone-walkcle-team-bling\\final-capstone\\Sample_Projects\\te-snippets\\backend\\dotnet\\TeSnippets\\TeSnippets.csproj",
-      "packagesPath": "C:\\Users\\KPartezana\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\KPartezana\\Git\\c-final-capstone-walkcle-team-bling\\final-capstone\\Sample_Projects\\te-snippets\\backend\\dotnet\\TeSnippets\\obj\\",
+      "projectPath": "C:\\Users\\RHolland\\git\\c-final-capstone-walkcle-team-bling\\final-capstone\\Sample_Projects\\te-snippets\\backend\\dotnet\\TeSnippets\\TeSnippets.csproj",
+      "packagesPath": "C:\\Users\\RHolland\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\RHolland\\git\\c-final-capstone-walkcle-team-bling\\final-capstone\\Sample_Projects\\te-snippets\\backend\\dotnet\\TeSnippets\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\KPartezana\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\RHolland\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
