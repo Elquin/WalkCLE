@@ -24,6 +24,15 @@ export default {
             userLocation: null
         }
     },
+    computed: {
+        filteredLocations() {
+            const filter = new RegExp(this.search,'i');
+            let arr1 = this.locations.filter(location => location.task.match(filter));
+            let arr2 = this.locations.filter(location => location.category.match(filter));
+            arr1.concat(arr2);
+            return Array.from(new Set(arr1));
+      }
+    },
     created() {
         this.fetchLocations();
         this.fetchUserLocation();
@@ -75,7 +84,29 @@ export default {
         },
         sortLocationsByDistanceFromUser(){
           
-        }
+        },
+        //#region 
+        // directionsTest(){
+        //     fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=41.4973,-81.6933&destination=41.500670,-81.680910&mode=walking&units=imperial&key=AIzaSyA8qsiApLrQeAAIrs-Rx8lGQHOxa_lxHc0`).then(
+        //         (resp) => {
+        //             if (resp.ok) {
+        //                 resp.json().then(
+        //                     (data) => {
+        //                         this.directions = data;
+        //                         console.log(this.directions);
+        //                     }
+        //                 )
+        //             }else {
+        //                 console.log(`Error: ${resp.status} ${resp.statusText}`)
+        //             }
+        //         }
+        //     ).catch(
+        //         (err) => {
+        //             console.log(err);
+        //         }
+        //     )
+        // }
+        //#endregion
     }
 }
 </script>

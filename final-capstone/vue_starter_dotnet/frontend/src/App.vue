@@ -3,8 +3,8 @@
     <locations-search v-on:filter-locations="handleSearch"></locations-search>
     <div id="nav">
       <router-link class="icons" :to="{ name: 'home' }" exact><img src="@/assets/logoIcon.png"/></router-link>
-      <router-link class="icons" :to="{ name: 'NearbyLocations' }" exact><img src="@/assets/gpsButton.png"/></router-link>
       <router-link class="icons" :to="{ name: 'login' }" exact><img src=@/assets/user.png/></router-link>
+      <router-link class="icons" :to="{ name: 'NearbyLocations' }" exact><img src="@/assets/gpsButton.png"/></router-link>
     </div>
     <router-view class="content"/>
     <div id="silhouette">
@@ -29,9 +29,15 @@ export default {
       Login,
       Details,
   },
+    data() {
+    return {
+      search: ''
+    }
+  },
+
   methods: {
       handleSearch(query) {
-          console.log('Filter Tasks: ', query);
+          console.log('Filter Locations: ', query);
           this.search = query;
       }
   }
@@ -66,6 +72,7 @@ export default {
 
   #nav img {
       width: 10%;
+      -webkit-filter: drop-shadow(4px 4px 25px rgba(0,0,0,0.5));
     }
 
   #nav img:hover {
