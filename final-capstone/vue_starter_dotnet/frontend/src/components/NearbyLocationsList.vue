@@ -1,8 +1,8 @@
 <template>
-  <div class="flex-container">
-    <div class="flex-section" v-for="location in locationsList" v-bind:key="location.name">
-      <div class="flex-image"><img src="@/assets/trophy.png"/></div>
-        <div class="flex-details">
+  <div class="grid-wrapper">
+    <div class="grid-card" v-for="location in locationsList" v-bind:key="location.name">
+      <div class="grid-image"><img src="@/assets/trophy.png"/></div>
+        <div class="grid-details">
           <ul>
               <li>
                   <h3>{{location.name}}</h3>
@@ -82,13 +82,30 @@ export default {
 </script>
 
 <style scoped>
-    .flex-container {
-      display: flex;
-      flex-direction: row;
+
+    .grid-wrapper {
+      width: 50%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "card";
     }
 
-    .flex-section {
-      flex-basis: 100px;
+    .grid-card {
+      grid-area: card;
+      display: grid;
+      grid-template-columns: 1fr 6fr;
+      grid-template-areas:
+        "image details";
+    }
+
+    .grid-image {
+      grid-area: image;
+    }
+
+    .grid-details {
+      grid-area: details;
     }
 
 
