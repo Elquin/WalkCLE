@@ -18,6 +18,7 @@ import LocationsSearch from '@/components/LocationsSearch.vue';
 import NearbyLocationsList from '@/components/NearbyLocationsList.vue';
 import Register from '@/views/Register.vue';
 import Login from '@/views/Login.vue';
+import Details from '@/components/Details.vue';
 
 export default {
   name: 'app',
@@ -25,7 +26,8 @@ export default {
       LocationsSearch,
       NearbyLocationsList,
       Register,
-      Login
+      Login,
+      Details,
   },
   methods: {
       handleSearch(query) {

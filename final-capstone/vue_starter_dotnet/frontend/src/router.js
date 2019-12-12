@@ -5,6 +5,7 @@ import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Register from './views/Register.vue'
 import NearbyLocations from './views/NearbyLocations.vue'
+import LocationDetails from './views/LocationDetails.vue'
 
 Vue.use(Router)
 
@@ -53,6 +54,14 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: "/Details",
+      name: "LocationDetails",
+      component: LocationDetails,
+      meta: {
+        requiresAuth: false
+      }
+    }
   ]
 })
 
