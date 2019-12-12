@@ -5,7 +5,7 @@
       <h3>We have so many places to explore today!</h3>
       <p>Click on "Nearby Locations" or enter a location in the search bar above to get started.</p>
     </div>
-    <div class="nearby-button"><img src="@/assets/gpsButton.png"/></div>
+    <div class="nearby-button"><img src="@/assets/gpsButton.png"/><h2>NEARBY LOCATIONS</h2></div>
   </div>
 </template>
 
@@ -29,6 +29,10 @@ export default {
 
   .message-box > h1 {
     color: #607c85;
+  }
+
+  .nearby-button {
+    width: 20%;
   }
 
 </style>
