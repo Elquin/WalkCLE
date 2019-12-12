@@ -22,8 +22,6 @@ namespace SampleApi.Models
 
         public decimal Longitude { get; set; }
 
-        public List<string> Categories { get; set; }
-
         public string Address { get; set; }
 
         public string Image { get; set; }
@@ -33,6 +31,8 @@ namespace SampleApi.Models
         public int PriceLevel { get; set; }
 
         public string WebsiteURL { get; set; }
+
+        public string GoogleURL { get; set; }
 
     }
 }
