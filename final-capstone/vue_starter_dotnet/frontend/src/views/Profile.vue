@@ -14,9 +14,7 @@
 </template>
 
 <script>
-export default {
-  name: 'profile'
-}
+
 </script>
 
 
@@ -40,6 +38,7 @@ export default {
     text-align: center;
     padding: 5px;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
+    
 }
 
 .history {
