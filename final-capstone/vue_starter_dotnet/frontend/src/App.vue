@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <list-locations></list-locations>
+    <list-locations v- bind:locationsList="Locations" v-bind:search="search" ></list-locations>
     <locations-search v-on:filter-locations="handleSearch"></locations-search>
     <div id="nav">
       <router-link class="icons" :to="{ name: 'home' }" exact><img src="@/assets/user.png"/></router-link>
@@ -25,9 +25,15 @@ export default {
       ListLocations,
       Register
   },
+    data() {
+    return {
+      search: ''
+    }
+  },
+
   methods: {
       handleSearch(query) {
-          console.log('Filter Tasks: ', query);
+          console.log('Filter Locations: ', query);
           this.search = query;
       }
   }
