@@ -27,8 +27,8 @@ export default {
     computed: {
         filteredLocations() {
             const filter = new RegExp(this.search,'i');
-            let arr1 = this.locations.filter(location => location.task.match(filter));
-            let arr2 = this.locations.filter(location => location.category.match(filter));
+            let arr1 = this.locationsList.filter(location => location.name.match(filter));
+            let arr2 = this.locationsList.filter(location => location.category.match(filter));
             arr1.concat(arr2);
             return Array.from(new Set(arr1));
       }

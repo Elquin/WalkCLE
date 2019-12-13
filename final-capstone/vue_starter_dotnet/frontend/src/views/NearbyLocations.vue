@@ -1,7 +1,10 @@
 <template>  <!--Creating template for each location-->
-    <div class="nearbylocations">
-        <h1>Nearby Locations</h1>
-        <nearby-locations-list/>           
+    <div>
+        <locations-search v-on:filter-locations="handleSearch"></locations-search>
+        <div class="nearbylocations">
+            <h1>Nearby Locations</h1>
+            <nearby-locations-list/>           
+        </div>
     </div>
 </template>
 
@@ -12,7 +15,13 @@ export default {
     name: 'nearbyLocations',
     components: {
         NearbyLocationsList
-    }
+    },
+    methods: {
+        handleSearch(query) {
+            console.log('Filter Locations: ', query);
+            this.search = query;
+      }
+  }
 }
 </script>
 
