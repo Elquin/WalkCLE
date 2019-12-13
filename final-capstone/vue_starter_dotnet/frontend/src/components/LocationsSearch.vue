@@ -1,7 +1,7 @@
 <template>
     <div class="wrap">
    <div class="search">
-      <input type="text" class="searchTerm" v-on:keyup='filterLocations' placeholder="Please enter a location name or description...">
+      <input type="text" id="search-bar" class="searchTerm" v-on:keyup='filterLocations' placeholder="Please enter a location name or description...">
       <button type="submit" class="searchButton">🔍
         <i class="fa fa-search"></i>
      </button>
@@ -23,7 +23,7 @@ export default {
     },
     methods: {
         filterLocations(){
-          const query = document.getElementById('search').value;
+          const query = document.getElementById('search-bar').value;
           this.$emit('filter-locations', query);
         }
     }

@@ -1,5 +1,8 @@
 <template>
   <div class="flex-container">
+    <!-- <video class="video" width="320" height="240" loop autoplay>
+      <source src="@/assets/video.mp4" type="video/mp4">
+    </video> -->
     <div class="message-box">
       <h1>Hello User!</h1>
       <h3>We have so many places to explore today!</h3>
@@ -26,6 +29,7 @@ export default {
     text-align: center;
     padding: 5px;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
+    border-radius: 10px;
   }
 
   .message-box > h1 {
