@@ -24,6 +24,7 @@
 
 
 <style scoped>
+/* #region Content */
 .grid-container {
     display: grid;
     grid-column-gap: 10px;
@@ -79,5 +80,6 @@
 .portrait > img {
     width: 20%;
 }
+/* #endregion Content */
 </style>
 
