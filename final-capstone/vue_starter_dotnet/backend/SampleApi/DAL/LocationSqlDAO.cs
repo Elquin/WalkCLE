@@ -56,7 +56,7 @@ namespace SampleApi.DAL
                     {
                         connection.Open();
 
-                        string getCategoriesSql = @"select *, Category.Name as 'category_name' from Location
+                        string getCategoriesSql = @"select Category.Name as 'category_name' from Location
                                     join Location_Category on Location_Category.Location_Id = Location.Id
                                     join Category on Location_Category.Category_Id = Category.Id
                                     where Location.Name = @locationName";
@@ -114,7 +114,7 @@ namespace SampleApi.DAL
                 {
                     connection.Open();
 
-                    string getCategoriesSql = @"select *, Category.Name as 'category_name' from Location
+                    string getCategoriesSql = @"select Category.Name as 'category_name' from Location
                             join Location_Category on Location_Category.Location_Id = Location.Id
                             join Category on Location_Category.Category_Id = Category.Id
                             where Location.Name = @locationName";
