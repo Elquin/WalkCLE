@@ -53,7 +53,7 @@
 
 .portrait {
     background-color: white;
-    border-radius: 15px;
+    border-radius: 10px;
     grid-area: portrait;
     text-align: center;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
@@ -64,7 +64,7 @@
     background-image: url('../assets/clevedt.jpg');
     background-size: 100%;
     background-position:bottom;
-    border-radius: 15px 15px 0px 0px;
+    border-radius: 10px 10px 0px 0px;
 }
 
 .portrait-top > img {
@@ -77,7 +77,7 @@
 
 .history-card {
     background-image: url('../assets/map.png');
-    border-radius: 15px;
+    border-radius: 10px;
     grid-area: history;
     text-align: center;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
@@ -85,7 +85,7 @@
 }
 
 .history-title {
-    border-radius: 15px 15px 0px 0px;
+    border-radius: 10px 10px 0px 0px;
     background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.733) 15%, rgb(255, 255, 255) 75%);
     padding: 2px 0px 2px 0px;
 }
@@ -93,7 +93,7 @@
 .history-content {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.733) 15%, rgb(255, 255, 255) 75%);
     height: 100%;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 .history-content ul {
@@ -104,7 +104,7 @@
 
 .badges-card {
     background-image: url('../assets/trophybkgd.png');
-    border-radius: 15px;
+    border-radius: 10px;
     grid-area: badges;
     text-align: center;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
@@ -112,7 +112,7 @@
 }
 
 .badges-title {
-    border-radius: 15px 15px 0px 0px;
+    border-radius: 10px 10px 0px 0px;
     background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.733) 15%, rgb(255, 255, 255) 75%);
     padding: 2px 0px 2px 0px;
 }
@@ -120,7 +120,7 @@
 .badges-content {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.733) 15%, rgb(255, 255, 255) 75%);
     height: 100%;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 .badges-content ul {
