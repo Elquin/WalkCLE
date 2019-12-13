@@ -1,5 +1,8 @@
 <template>
   <div class="flex-container">
+    <!-- <video class="video" width="320" height="240" loop autoplay>
+      <source src="@/assets/video.mp4" type="video/mp4">
+    </video> -->
     <div class="message-box">
       <h1>Hello User!</h1>
       <h3>We have so many places to explore today!</h3>

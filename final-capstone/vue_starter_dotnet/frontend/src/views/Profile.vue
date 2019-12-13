@@ -5,10 +5,14 @@
         <h3>Samantha</h3>
     </div>
     <div class="history">
-        <p>Placeholder History</p>
+        <div class="history-content">
+            <p>Placeholder History</p>
+        </div>
     </div>
     <div class="badges">
-        <p>Placeholder Badge</p>
+        <div class="badges-content">
+            <p>Placeholder Badge</p>
+        </div>
     </div>
   </div>
 </template>
@@ -20,7 +24,6 @@
 
 
 <style scoped>
-
 .grid-container {
     display: grid;
     grid-column-gap: 10px;
@@ -32,6 +35,7 @@
         '. history badges .';
 }
 
+
 .portrait {
     background-color: white;
     border-radius: 15px;
@@ -39,29 +43,41 @@
     text-align: center;
     padding: 5px;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
-    
 }
 
 .history {
-    background-color: white;
+    background-image: url('../assets/map.png');
     border-radius: 15px;
     grid-area: history;
     text-align: center;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
+    opacity: 95%;
 }
 
+.history-content {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.733) 10%, rgb(255, 255, 255) 75%);
+    height: 100%;
+    border-radius: 15px;
+}
+
+
 .badges {
-    background-color: white;
+    background-image: url('../assets/trophybkgd.png');
     border-radius: 15px;
     grid-area: badges;
     text-align: center;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
+    opacity: 95%;
+}
+
+.badges-content {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.733) 10%, rgb(255, 255, 255) 75%);
+    height: 100%;
+    border-radius: 15px;
 }
 
 .portrait > img {
     width: 20%;
 }
-
-
 </style>
 
