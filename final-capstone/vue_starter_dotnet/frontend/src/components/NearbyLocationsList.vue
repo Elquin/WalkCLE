@@ -53,7 +53,7 @@ export default {
                     resp.json().then(
                     (data) => {
                         this.locationsList = data;
-                        console.log(this.locationsList);
+                        this.sortLocationsByDistanceFromUser();
                     }
                     )
                 } else {
@@ -64,26 +64,54 @@ export default {
                 (err) => {
                 console.log(err);
                 }
-            )
+            );
+            
         },
         getDistanceFromLatLonInMi(lat1,lon1,lat2,lon2) {
-          var R = 6371; // Radius of the earth in km
-          var dLat = deg2rad(lat2-lat1);  // deg2rad below
-          var dLon = deg2rad(lon2-lon1); 
-          var a = 
+          let R = 6371; // Radius of the earth in km
+          let dLat = this.deg2rad(lat2-lat1);  // deg2rad below
+          let dLon = this.deg2rad(lon2-lon1); 
+          let a = 
             Math.sin(dLat/2) * Math.sin(dLat/2) +
-            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+            Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) * 
             Math.sin(dLon/2) * Math.sin(dLon/2)
             ; 
-          var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-          var d = R * c; // Distance in km
+          let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+          let d = R * c; // Distance in km
           return d * 1.609344;
         },
         deg2rad(deg) {
           return deg * (Math.PI/180)
         },
         sortLocationsByDistanceFromUser(){
-          
+          let tempLocationsList = this.locationsList;
+          let origLocationsListLength = tempLocationsList.length;
+          let shortestDistanceIndex = 0;
+          for(let i = 0; i < origLocationsListLength; i++){
+            let shortestDistance = 100000;
+            for (let j = 0; j < tempLocationsList.length; j++){
+              let userLat = this.userLocation.coords.latitude;
+              let userLong = this.userLocation.coords.longitude;
+              let thisLat = tempLocationsList[j].latitude;
+              let thisLong = tempLocationsList[j].longitude;
+              let thisDistance = this.getDistanceFromLatLonInMi(userLat, userLong, thisLat, thisLong);
+              tempLocationsList[j]
+              if (thisDistance < shortestDistance){
+                shortestDistance = thisDistance;
+                if (tempLocationsList[j].id = 8){
+                  console.log(thisDistance + "<" + shortestDistance);
+                }
+                shortestDistanceIndex = j;
+              }
+            }
+            this.closestLocationsList.push(tempLocationsList[shortestDistanceIndex]);
+            tempLocationsList.splice(shortestDistanceIndex, 1);
+            console.log(shortestDistanceIndex);
+            shortestDistanceIndex = 0;
+          }
+          console.log("WHY ARENT YOU PRINTING");
+          console.log(this.closestLocationsList);
+          console.log("PLEASE TELL ME");
         },
         //#region 
         // directionsTest(){
