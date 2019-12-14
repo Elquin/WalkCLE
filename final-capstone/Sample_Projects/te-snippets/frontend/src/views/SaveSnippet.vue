@@ -94,8 +94,8 @@ export default {
         fetch(`${process.env.VUE_APP_REMOTE_API}/${apiEndpoint}`, {
           method: this.isEditForm ? 'PUT' : 'POST',
           headers: {
-            'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + auth.getToken(),
+            'Content-Type': 'application/json',         //remember to do
+            Authorization: 'Bearer ' + auth.getToken(),  //remember to do
           },
           body: JSON.stringify(this.snippet),
         })

@@ -60,7 +60,7 @@ const router = new Router({
       name: "profile",
       component: Profile,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -68,7 +68,7 @@ const router = new Router({
       name: "LocationDetails",
       component: LocationDetails,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
   ]

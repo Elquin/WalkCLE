@@ -2,9 +2,15 @@
   <div id="app">
     <locations-search v-on:filter-locations="handleSearch"></locations-search>
     <div id="nav">
-      <router-link class="icons" :to="{ name: 'home' }" exact><img src="@/assets/logoIcon.png"/></router-link>
-      <router-link class="icons" :to="{ name: 'profile' }" exact><img src=@/assets/user.png/></router-link>
-      <router-link class="icons" :to="{ name: 'NearbyLocations' }" exact><img src="@/assets/gpsButton.png"/></router-link>
+      <div id="icon1">
+        <router-link class="icons" :to="{ name: 'home' }" exact><img src="@/assets/logoIcon.png"/></router-link>
+      </div>
+      <div id="icon2">
+        <router-link class="icons" :to="{ name: 'profile' }" exact><img src=@/assets/user.png/></router-link>
+      </div>
+      <div id="icon3">
+        <router-link class="icons" :to="{ name: 'NearbyLocations' }" exact><img src="@/assets/gpsButton.png"/></router-link>
+      </div>
     </div>
     <router-view class="content"/>
     <div id="silhouette">
@@ -62,17 +68,29 @@ export default {
 
   #nav {
     margin-top: 40px;
-    text-align: right;
     position:fixed; right:10px; top:10px;
+    padding: 0px;
+    width: 95px;
+  }
+
+  #nav #icon1 {
+    text-align: right;
+  }
+
+  #nav #icon2 {
+    text-align: right;
+  }
+
+  #nav #icon3 {
+    text-align: right;
   }
 
   #nav .icons {
     display: block;
-    
   }
 
   #nav img {
-      width: 10%;
+      width: 100%;
       -webkit-filter: drop-shadow(4px 4px 25px rgba(0,0,0,0.5));
     }
 

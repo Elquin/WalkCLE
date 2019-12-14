@@ -56,10 +56,10 @@ namespace SampleApi.DAL
                     {
                         connection.Open();
 
-                        string getCategoriesSql = @"select *, Category.Name as 'category_name' from Location
-join Location_Category on Location_Category.Location_Id = Location.Id
-join Category on Location_Category.Category_Id = Category.Id
-where Location.Name = @locationName";
+                        string getCategoriesSql = @"select Category.Name as 'category_name' from Location
+                                    join Location_Category on Location_Category.Location_Id = Location.Id
+                                    join Category on Location_Category.Category_Id = Category.Id
+                                    where Location.Name = @locationName";
 
                         SqlCommand cmd = new SqlCommand(getCategoriesSql, connection);
                         cmd.Parameters.AddWithValue("@locationName", location.Name);
@@ -114,10 +114,10 @@ where Location.Name = @locationName";
                 {
                     connection.Open();
 
-                    string getCategoriesSql = @"select *, Category.Name as 'category_name' from Location
-join Location_Category on Location_Category.Location_Id = Location.Id
-join Category on Location_Category.Category_Id = Category.Id
-where Location.Name = @locationName";
+                    string getCategoriesSql = @"select Category.Name as 'category_name' from Location
+                            join Location_Category on Location_Category.Location_Id = Location.Id
+                            join Category on Location_Category.Category_Id = Category.Id
+                            where Location.Name = @locationName";
 
                     SqlCommand cmd = new SqlCommand(getCategoriesSql, connection);
                     cmd.Parameters.AddWithValue("@locationName", location.Name);
@@ -153,6 +153,7 @@ where Location.Name = @locationName";
                 PhoneNumber = Convert.ToString(reader["PhoneNum"]),
                 PriceLevel = Convert.ToInt32(reader["PriceLevel"]),
                 WebsiteURL = Convert.ToString(reader["WebsiteURL"]),
+                GoogleURL = Convert.ToString(reader["GoogleURL"])
             };
         }
     }

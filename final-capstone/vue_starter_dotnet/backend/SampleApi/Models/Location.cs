@@ -9,7 +9,7 @@ namespace SampleApi.Models
     /// Represents a location in the system.
     /// </summary>
     public class Location
-    {   
+    {
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -26,6 +26,8 @@ namespace SampleApi.Models
 
         public string Image { get; set; }
 
+        public List<string> Categories { get; set; }
+
         public string PhoneNumber { get; set; }
 
         public int PriceLevel { get; set; }
@@ -33,8 +35,5 @@ namespace SampleApi.Models
         public string WebsiteURL { get; set; }
 
         public string GoogleURL { get; set; }
-
-        public List<string> Categories { get; set; }
-
     }
 }
