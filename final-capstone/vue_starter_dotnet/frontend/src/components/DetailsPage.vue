@@ -2,17 +2,17 @@
 <div>
     <gmap-map id="map"
     :center="center" 
-    :zoom="15"
+    :zoom="13"
     >
     
     <gmap-marker v-for="m in markers" v-bind:key="m.position" :position="m.position"/>
     </gmap-map>
-    <p>{{location.name}}</p>
-    <p>{{location.longDescription}}</p>
-    <p>{{location.address}}</p>
-    <p>{{location.phoneNumber}}</p>
-    <p>{{location.websiteURL}}</p>
-    <p>{{location.priceLevel}}</p>
+    <p>Name: {{location.name}}</p>
+    <p>Description: {{location.longDescription}}</p>
+    <p>Address: {{location.address}}</p>
+    <p>Phone Number: {{location.phoneNumber}}</p>
+    <p>Website: {{location.websiteURL}}</p>
+    <p>Price Level: {{location.priceLevel}}</p>
   </div>
 </template>
 
@@ -28,7 +28,7 @@ export default {
           position: {
               lat: 41.503370,
               lng: -81.639050
-          }
+          },
       }],
       location: [],
     };
