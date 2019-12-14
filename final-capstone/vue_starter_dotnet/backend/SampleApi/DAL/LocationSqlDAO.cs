@@ -153,7 +153,7 @@ namespace SampleApi.DAL
                 PhoneNumber = Convert.ToString(reader["PhoneNum"]),
                 PriceLevel = Convert.ToInt32(reader["PriceLevel"]),
                 WebsiteURL = Convert.ToString(reader["WebsiteURL"]),
-                GoogleURL = Convert.ToString(reader["GoogleURL"])
+                //GoogleURL = Convert.ToString(reader["GoogleURL"])
             };
         }
     }

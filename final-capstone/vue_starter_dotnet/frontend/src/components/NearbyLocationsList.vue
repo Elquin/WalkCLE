@@ -53,7 +53,7 @@ export default {
                     resp.json().then(
                     (data) => {
                         this.locationsList = data;
-                        this.sortLocationsByDistanceFromUser();
+                        //this.sortLocationsByDistanceFromUser();
                     }
                     )
                 } else {
@@ -83,36 +83,66 @@ export default {
         deg2rad(deg) {
           return deg * (Math.PI/180)
         },
+
         sortLocationsByDistanceFromUser(){
-          let tempLocationsList = this.locationsList;
-          let origLocationsListLength = tempLocationsList.length;
-          let shortestDistanceIndex = 0;
-          for(let i = 0; i < origLocationsListLength; i++){
+
+          for (location in this.locationsList){
+            let userLat = this.userLocation.coords.latitude;
+            let userLong = this.userLocation.coords.longitude;
+            let thisLat = location.latitude;
+            let thisLong = location.longitude;
+            let thisDistance = this.getDistanceFromLatLonInMi(userLat, userLong, thisLat, thisLong);
+            location.distanceFromUser = thisDistance;
+          }
+
+          let origLocListLen = this.locationsList.length;
+
+          for (let i = 0; i < origLocListLen; i++){
             let shortestDistance = 100000;
-            for (let j = 0; j < tempLocationsList.length; j++){
-              let userLat = this.userLocation.coords.latitude;
-              let userLong = this.userLocation.coords.longitude;
-              let thisLat = tempLocationsList[j].latitude;
-              let thisLong = tempLocationsList[j].longitude;
-              let thisDistance = this.getDistanceFromLatLonInMi(userLat, userLong, thisLat, thisLong);
-              tempLocationsList[j]
-              if (thisDistance < shortestDistance){
-                shortestDistance = thisDistance;
-                if (tempLocationsList[j].id = 8){
-                  console.log(thisDistance + "<" + shortestDistance);
-                }
-                shortestDistanceIndex = j;
+            let shortestDistanceIndex = 0;
+            for (let i = 0; i < this.locationsList.length; i++){
+              if (this.locationsList[i].distanceFromUser < shortestDistance){
+                shortestDistance = this.locationsList[i].distanceFromUser;
+                shortestDistanceIndex = i;
               }
             }
-            this.closestLocationsList.push(tempLocationsList[shortestDistanceIndex]);
-            tempLocationsList.splice(shortestDistanceIndex, 1);
-            console.log(shortestDistanceIndex);
-            shortestDistanceIndex = 0;
+            this.closestLocationsList.push(this.locationsList[shortestDistanceIndex]);
+            this.locationsList.splice(shortestDistanceIndex, 1);
           }
-          console.log("WHY ARENT YOU PRINTING");
           console.log(this.closestLocationsList);
-          console.log("PLEASE TELL ME");
         },
+        // sortLocationsByDistanceFromUser(){
+        //   let tempLocationsList = this.locationsList;
+        //   let origLocationsListLength = tempLocationsList.length;
+        //   let shortestDistanceIndex = 0;
+        //   for(let i = 0; i < origLocationsListLength; i++){
+        //     let shortestDistance = 100000;
+        //     for (let j = 0; j < tempLocationsList.length; j++){
+        //       let userLat = this.userLocation.coords.latitude;
+        //       let userLong = this.userLocation.coords.longitude;
+        //       let thisLat = tempLocationsList[j].latitude;
+        //       let thisLong = tempLocationsList[j].longitude;
+        //       let thisDistance = this.getDistanceFromLatLonInMi(userLat, userLong, thisLat, thisLong);
+        //       tempLocationsList[j]
+        //       if (thisDistance < shortestDistance){
+        //         shortestDistance = thisDistance;
+        //         if (tempLocationsList[j].id = 8){
+        //           console.log(thisDistance + "<" + shortestDistance);
+        //         }
+        //         shortestDistanceIndex = j;
+        //       }
+        //     }
+        //     this.closestLocationsList.push(tempLocationsList[shortestDistanceIndex]);
+        //     tempLocationsList.splice(shortestDistanceIndex, 1);
+        //     console.log(shortestDistanceIndex);
+        //     shortestDistanceIndex = 0;
+        //   }
+        //   console.log("WHY ARENT YOU PRINTING");
+        //   console.log(this.closestLocationsList);
+        //   console.log("PLEASE TELL ME");
+        // },
+
+
         //#region 
         // directionsTest(){
         //     fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=41.4973,-81.6933&destination=41.500670,-81.680910&mode=walking&units=imperial&key=AIzaSyA8qsiApLrQeAAIrs-Rx8lGQHOxa_lxHc0`).then(
