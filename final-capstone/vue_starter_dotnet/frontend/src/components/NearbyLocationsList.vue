@@ -1,6 +1,6 @@
 <template>
   <div class="flex-container">
-    <div class="flex-item" v-for="location in locationsList" v-bind:key="location.name">
+    <div class="flex-item" v-for="location in closestLocationsList" v-bind:key="location.name">
 
       <div class="location-image"><router-link v-bind:to="{name:'Details', params: {id: location.id}}"><img src="@/assets/location-image.jpg"/></router-link></div>
           <ul>
@@ -55,7 +55,7 @@ export default {
                     resp.json().then(
                     (data) => {
                         this.locationsList = data;
-                        //this.sortLocationsByDistanceFromUser();
+                        this.sortLocationsByDistanceFromUser();
                     }
                     )
                 } else {
@@ -87,18 +87,18 @@ export default {
         },
 
         sortLocationsByDistanceFromUser(){
+          // add a distanceFromUser property to each location object to use for sorting
+           for (let i = 0; i < this.locationsList.length; i++){
+             let userLat = this.userLocation.coords.latitude;
+             let userLong = this.userLocation.coords.longitude;
+             let thisLat = this.locationsList[i].latitude;
+             let thisLong = this.locationsList[i].longitude;
+             let thisDistance = this.getDistanceFromLatLonInMi(userLat, userLong, thisLat, thisLong);
+             this.locationsList[i].distanceFromUser = thisDistance;
+           }
 
-          for (location in this.locationsList){
-            let userLat = this.userLocation.coords.latitude;
-            let userLong = this.userLocation.coords.longitude;
-            let thisLat = location.latitude;
-            let thisLong = location.longitude;
-            let thisDistance = this.getDistanceFromLatLonInMi(userLat, userLong, thisLat, thisLong);
-            location.distanceFromUser = thisDistance;
-          }
-
+          // sort the list of locations by distance from the user
           let origLocListLen = this.locationsList.length;
-
           for (let i = 0; i < origLocListLen; i++){
             let shortestDistance = 100000;
             let shortestDistanceIndex = 0;
