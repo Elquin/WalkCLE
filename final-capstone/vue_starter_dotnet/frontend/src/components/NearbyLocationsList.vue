@@ -1,14 +1,14 @@
 <template>
   <div class="flex-container">
+    
     <div class="flex-item" v-for="location in locationsList" v-bind:key="location.name">
-
-      <div class="location-image"><router-link v-bind:to="{name:'Details', params: {id: location.id}}"><img src="@/assets/location-image.jpg"/></router-link></div>
+    
+    <div class="location-image"><router-link v-bind:to="{name:'LocationDetails', params: {id: location.id}}"><img src="@/assets/location-image.jpg"/></router-link></div>    
           <ul>
               <li>
-                  <router-link v-bind:to="{name:'Details', params: {id: location.id}}">
-                  <h3>{{location.name}}</h3></router-link>
+                  <h3>{{location.name}}</h3>
                   <p>{{location.shortDescription}}</p>
-                  <p>{{location.address}}</p>
+                  <p>{{location.address}}</p> 
               </li>
           </ul>
     </div>
@@ -207,8 +207,6 @@ export default {
       box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
       
     }
-
-
 
     /* div {
       margin: 20px;
