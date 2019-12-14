@@ -1,21 +1,23 @@
 <template>
     <div class="locationDetails">
-        <details></details>         
+      <details-page/>
     </div>
 </template>
 
 <script>
-import Details from '@/components/Details'
+import DetailsPage from '@/components/DetailsPage.vue'
 
 export default {
     name: 'locationDetails',
     components: {
-        Details
+        DetailsPage
     }
 }
 </script>
 
-<style-scoped>
 
 
-</style-scoped>
+<style scoped>
+
+
+</style>

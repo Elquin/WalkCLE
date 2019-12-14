@@ -34,5 +34,7 @@ namespace SampleApi.Models
 
         public string GoogleURL { get; set; }
 
+        public List<string> Categories { get; set; }
+
     }
 }

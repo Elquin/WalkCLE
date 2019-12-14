@@ -18,7 +18,7 @@ import LocationsSearch from '@/components/LocationsSearch.vue';
 import NearbyLocationsList from '@/components/NearbyLocationsList.vue';
 import Register from '@/views/Register.vue';
 import Login from '@/views/Login.vue';
-import Details from '@/components/Details.vue';
+import DetailsPage from '@/components/DetailsPage.vue';
 import Profile from '@/views/Profile.vue';
 
 export default {
@@ -28,7 +28,7 @@ export default {
       NearbyLocationsList,
       Register,
       Login,
-      Details,
+      DetailsPage,
   },
     data() {
     return {
