@@ -1,11 +1,12 @@
 <template>
   <div class="flex-container">
     <div class="flex-item" v-for="location in locationsList" v-bind:key="location.name">
-      <div class="location-image"><img src="@/assets/location-image.jpg"/></div>
+
+      <div class="location-image"><router-link v-bind:to="{name:'Details', params: {id: location.id}}"><img src="@/assets/location-image.jpg"/></router-link></div>
           <ul>
               <li>
-                  
-                  <h3>{{location.name}}</h3>
+                  <router-link v-bind:to="{name:'Details', params: {id: location.id}}">
+                  <h3>{{location.name}}</h3></router-link>
                   <p>{{location.shortDescription}}</p>
                   <p>{{location.address}}</p>
               </li>
@@ -15,6 +16,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'nearby-locations-list',
     data(){
