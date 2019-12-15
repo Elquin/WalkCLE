@@ -19,6 +19,7 @@
 
 <script>
 
+
 export default {
     name: 'nearby-locations-list',
     data(){
