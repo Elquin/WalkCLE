@@ -22,6 +22,9 @@
 
 export default {
     name: 'nearby-locations-list',
+        props: {
+        search: String,
+    },
     data(){
         return {
             locationsList: [],
@@ -33,8 +36,10 @@ export default {
         filteredLocations() {
             const filter = new RegExp(this.search,'i');
             let arr1 = this.locationsList.filter(location => location.name.match(filter));
-            let arr2 = this.locationsList.filter(location => location.category.match(filter));
+            let arr2 = this.locationsList.filter(location => location.longDescription.match(filter));
             arr1.concat(arr2);
+            // let arr3 = this.locationsList.filter(location => location.category.match(filter));
+            // arr1.concat(arr3);
             return Array.from(new Set(arr1));
       }
     },

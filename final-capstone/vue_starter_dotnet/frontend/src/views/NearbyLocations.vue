@@ -3,7 +3,7 @@
         <locations-search v-on:filter-locations="handleSearch"></locations-search>
         <div class="nearbylocations">
             <h1>Nearby Locations</h1>
-            <nearby-locations-list/>           
+            <nearby-locations-list v-bind:search="search" />           
         </div>
     </div>
 </template>
@@ -16,6 +16,12 @@ export default {
     components: {
         NearbyLocationsList
     },
+      data() {
+    return {
+      search: ''
+    }
+  },
+
     methods: {
         handleSearch(query) {
             console.log('Filter Locations: ', query);
