@@ -28,59 +28,80 @@
 </template>
 
 <script>
-
+import auth from '@/auth';
 export default {
     name: 'details-page',
     data() {
       return {
         center: {  },
-        markers: [{
-            position: {
-                lat: 41.503370,
-                lng: -81.639050
-            },
-        }],
+        // markers: [{
+        //     position: {
+        //         lat: 41.503370,
+        //         lng: -81.639050
+        //     },
+        // }],
         location: {},
-
+        map: '',
+        userLat: '',
+        userLong: ''
       };
   },
-  mounted: function() {
-    this.createMap()
+  mounted () {
+    // this.fetchUserLocation();
+    // this.createMap();
+    // this.getLocation(this.$route.params.id);
   },
   created() {
     this.fetchUserLocation();
     this.getLocation(this.$route.params.id);
-    this.createMap();
+    // this.createMap();
     
   },
   methods: {
     checkIn(){
+        this.location.locationId = this.location.id;
         fetch(`${process.env.VUE_APP_REMOTE_API}/checkin`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',         //remember to do
             Authorization: 'Bearer ' + auth.getToken(),  //remember to do
           },
-          body: JSON.stringify(this.location.id),
+          body: JSON.stringify(this.location),
         })
           .then((response) => {
             if (response.ok) {
-              this.$router.push({ path: '/' });
+              //this.$router.push({ path: `/` });
             }
           })
           .catch((err) => console.error(err));
       
     },
+    
     fetchUserLocation(){
-            navigator.geolocation.getCurrentPosition(pos => {
-                this.userLocation = pos;
-                let userLat = this.userLocation.coords.latitude;
-                let userLong = this.userLocation.coords.longitude;
-                console.log(this.userLocation);
-            }, err => {
-                this.errorStr = err.message;
-            })
-        },
+            navigator.geolocation.getCurrentPosition(this.locationSuccess, this.error, {enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0} )
+            // navigator.geolocation.getCurrentPosition(pos => {
+                // this.userLocation = pos;
+                // this.userLat = this.userLocation.coords.latitude;
+                // this.userLong = this.userLocation.coords.longitude;
+                // console.log('fetched location: ' + this.userLocation);
+                // console.log('fetched lat: ' + this.userLat);
+                // console.log('fetched long: ' + this.userLong);
+            },
+    error () {
+      errorStr = err.message;
+      },
+    locationSuccess (pos){
+      const crd = pos.coords;
+      this.userLocation = pos;
+      this.userLat = this.userLocation.coords.latitude;
+      this.userLong = this.userLocation.coords.longitude;
+      console.log('fetched location: ' + this.userLocation);
+      console.log('fetched lat: ' + this.userLat);
+      console.log('fetched long: ' + this.userLong);
+      this.createMap();
+    },
     getLocation(id) {
         fetch(`${process.env.VUE_APP_REMOTE_API}/locations/${id}`)
         .then((response) => {
@@ -101,12 +122,17 @@ export default {
         )
     },
     createMap () {
-        let myLatlng1 = new google.maps.LatLng(41.503370, -81.639050);
+        // this.fetchUserLocation();
+        // const userLocation = new google.maps.LatLng(41.503370, -81.639050);
+        console.log('CreateMap User Lat: ' + this.userLat);
+        console.log('CreateMap User Long: ' + this.userLong);
+        const userLocation = new google.maps.LatLng(this.userLat, this.userLong);
         const directionsRenderer = new google.maps.DirectionsRenderer;
         const directionsService = new google.maps.DirectionsService;
+
         console.log("map: ", google.maps)
             this.map = new google.maps.Map(document.getElementById('map-container'), {
-            center: myLatlng1,
+            center: userLocation,
             scrollwheel: true,
             zoom: 15,
             mapTypeControlOptions: {
@@ -114,19 +140,37 @@ export default {
               mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain']
               }
             })
+
         directionsRenderer.setMap(this.map);
         directionsRenderer.setPanel(document.getElementById('directions-box'));
         
-        calculateAndDisplayRoute(directionsService, directionsRenderer);
+        this.calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation);
 
-        
-
-        var marker = new google.maps.Marker({
-          position: myLatlng1,
-          map: this.map,
-          animation: google.maps.Animation.DROP,
+        // const marker = new google.maps.Marker({
+        //   position: userLocation,
+        //   map: this.map,
+        //   animation: google.maps.Animation.DROP,
+        // });
+    },
+    calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation){
+        // const destinationLatlng = 'Cleveland Botanical Garden';
+        console.log('Details Name: ' + location.name)
+        const destinationLatlng = 'Chicago, Il';
+        const start = userLocation
+        const end = destinationLatlng
+        directionsService.route({
+          origin: start,
+          destination: end,
+          travelMode: 'WALKING'
+        }, function(response, status){
+          if(status === 'OK') {
+            directionsRenderer.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
         });
-    }         
+
+    }
   }
 }
 </script>

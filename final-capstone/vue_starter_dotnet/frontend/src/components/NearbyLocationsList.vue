@@ -1,20 +1,19 @@
 <template>
   <div class="flex-container">
-    <div class="cards">
-        <router-link class="flex-item" v-for="location in filteredLocations" v-bind:key="location.name" tag="div" v-bind:to="{name:'LocationDetails', params: {id: location.id}}">
-        <div class="location-image"><img src="@/assets/location-image.jpg"/></div>
-            <ul class="location-details">
-            
-                <li >
-                    
-                    <h3>{{location.name}}</h3>
-                    <p>{{location.shortDescription}}</p>
-                    <p>{{location.address}}</p>
-                    
-                </li>
-            </ul>
-        </router-link>
-    </div>
+      <router-link class="flex-item" v-for="location in closestLocationsList" v-bind:key="location.name" tag="div" v-bind:to="{name:'LocationDetails', params: {id: location.id}}">
+      <div class="location-image"><img src="@/assets/location-image.jpg"/></div>
+          <ul>
+           
+              <li >
+                  
+                  <h3>{{location.name}}</h3>
+                  <p>{{location.shortDescription}}</p>
+                  <p>{{location.address}}</p>
+                  
+              </li>
+             
+          </ul>
+          </router-link>
   </div>
 </template>
 
