@@ -37,10 +37,10 @@ export default {
         filteredLocations() {
             console.log('filtering query');
             const filter = new RegExp(this.search,'i');
-            let arr1 = this.locationsList.filter(location => location.name.match(filter));
-            let arr2 = this.locationsList.filter(location => location.longDescription.match(filter));
+            let arr1 = this.closestLocationsList.filter(location => location.name.match(filter));
+            let arr2 = this.closestLocationsList.filter(location => location.longDescription.match(filter));
             arr1.concat(arr2);
-            // let arr3 = this.locationsList.filter(location => location.category.filter(cat => cat.filter.match(filter)));
+            // let arr3 = this.closestLocationsList.filter(location => location.category.filter(cat => cat.filter.match(filter)));
             // arr1.concat(arr3);
             return Array.from(new Set(arr1));
       }
