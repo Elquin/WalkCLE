@@ -3,7 +3,7 @@
         <locations-search v-on:filter-locations="handleSearch"></locations-search>
         <div class="nearbylocations">
             <h1>Nearby Locations</h1>
-            <nearby-locations-list v-bind:search="search" />           
+            <nearby-locations-list v-bind:search="search" ></nearby-locations-list>       
         </div>
     </div>
 </template>
@@ -24,7 +24,7 @@ export default {
 
     methods: {
         handleSearch(query) {
-            console.log('Filter Locations: ', query);
+            console.log('NearbyLocations query: ', query);
             this.search = query;
       }
   }
