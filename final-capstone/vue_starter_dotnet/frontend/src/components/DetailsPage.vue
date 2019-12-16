@@ -28,6 +28,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'details-page',
     data() {
@@ -49,6 +50,7 @@ export default {
   created() {
     this.fetchUserLocation();
     this.getLocation(this.$route.params.id);
+    this.createMap();
     
   },
   methods: {
@@ -98,10 +100,10 @@ export default {
           }
         )
     },
-    createMap() {
-        var myLatlng1 = new google.maps.LatLng(41.503370, -81.639050);
-        var directionsRenderer = new google.maps.DirectionsRenderer;
-        var directionsService = new google.maps.DirectionsService;
+    createMap () {
+        let myLatlng1 = new google.maps.LatLng(41.503370, -81.639050);
+        const directionsRenderer = new google.maps.DirectionsRenderer;
+        const directionsService = new google.maps.DirectionsService;
         console.log("map: ", google.maps)
             this.map = new google.maps.Map(document.getElementById('map-container'), {
             center: myLatlng1,
@@ -114,11 +116,40 @@ export default {
             })
         directionsRenderer.setMap(this.map);
         directionsRenderer.setPanel(document.getElementById('directions-box'));
+        
+        calculateAndDisplayRoute(directionsService, directionsRenderer);
+
+        
+
         var marker = new google.maps.Marker({
           position: myLatlng1,
-          map: this.map
+          map: this.map,
+          animation: google.maps.Animation.DROP,
         });
+<<<<<<< HEAD
+        
+                 
+    },
+    calculateAndDisplayRoute(directionsService, directionsRenderer){
+        var destinationLatlng = new google.maps.LatLng(41.5111, -81.6096);
+        var start = myLatlng1
+        var end = destinationLatlng
+        directionsService.route({
+          origin: start,
+          destination: end,
+          travelMode: 'WALKING'
+        }, function(response, status){
+          if(status === 'OK') {
+            directionsRenderer.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+
+    }
+=======
     }         
+>>>>>>> ebdb9bc6ecf821c6e9186a8da1bd4c6958107029
   }
 }
 </script>
