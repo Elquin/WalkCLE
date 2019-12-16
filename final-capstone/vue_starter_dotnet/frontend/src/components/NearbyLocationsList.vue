@@ -1,6 +1,6 @@
 <template>
   <div class="flex-container">
-      <router-link class="flex-item" v-for="location in filteredLocations" v-bind:key="location.name" tag="div" v-bind:to="{name:'LocationDetails', params: {id: location.id}}">
+      <router-link class="flex-item" v-for="location in closestLocationsList" v-bind:key="location.name" tag="div" v-bind:to="{name:'LocationDetails', params: {id: location.id}}">
       <div class="location-image"><img src="@/assets/location-image.jpg"/></div>
           <ul>
            

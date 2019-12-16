@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import auth from '@/auth';
 export default {
     name: 'details-page',
     data() {
@@ -39,12 +40,11 @@ export default {
                 lng: -81.639050
             },
         }],
-        location: {},
-
+        location: {}
       };
   },
   mounted: function() {
-    this.createMap()
+    this.createMap();
   },
   created() {
     this.fetchUserLocation();
@@ -53,17 +53,18 @@ export default {
   },
   methods: {
     checkIn(){
+        this.location.locationId = this.location.id;
         fetch(`${process.env.VUE_APP_REMOTE_API}/checkin`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',         //remember to do
             Authorization: 'Bearer ' + auth.getToken(),  //remember to do
           },
-          body: JSON.stringify(this.location.id),
+          body: JSON.stringify(this.location),
         })
           .then((response) => {
             if (response.ok) {
-              this.$router.push({ path: '/' });
+              //this.$router.push({ path: `/` });
             }
           })
           .catch((err) => console.error(err));
