@@ -1,19 +1,20 @@
 <template>
   <div class="flex-container">
-      <router-link class="flex-item" v-for="location in closestLocationsList" v-bind:key="location.name" tag="div" v-bind:to="{name:'LocationDetails', params: {id: location.id}}">
-      <div class="location-image"><img src="@/assets/location-image.jpg"/></div>
-          <ul>
-           
-              <li >
-                  
-                  <h3>{{location.name}}</h3>
-                  <p>{{location.shortDescription}}</p>
-                  <p>{{location.address}}</p>
-                  
-              </li>
-             
-          </ul>
-          </router-link>
+    <div class="cards">
+        <router-link class="flex-item" v-for="location in closestLocationsList" v-bind:key="location.name" tag="div" v-bind:to="{name:'LocationDetails', params: {id: location.id}}">
+        <div class="location-image"><img src="@/assets/location-image.jpg"/></div>
+            <ul class="location-details">
+            
+                <li >
+                    
+                    <h3>{{location.name}}</h3>
+                    <p>{{location.shortDescription}}</p>
+                    <p>{{location.address}}</p>
+                    
+                </li>
+            </ul>
+        </router-link>
+    </div>
   </div>
 </template>
 
@@ -181,10 +182,32 @@ export default {
 
 <style scoped>
 
+    .flex-item:last-child { 
+      border-radius: 0px 0px 15px 15px;
+    }
+
+    .flex-item:first-child { 
+      margin-top: 20px;
+    }
+
     .flex-container {
       display: flex;
       align-items: center;
       flex-direction: column;
+    }
+
+    .cards {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 1%;
+    }
+
+    @media only screen and (max-width: 650px) {
+      .cards {
+        margin-top: 12%;
+      }
     }
 
     .flex-item {
@@ -205,16 +228,20 @@ export default {
       padding-left: 0px;
     }
 
+    .flex-item ul li {
+      padding-right: 5px;
+    }
+
     .location-image{
       width: 40%;
       padding: 20px;
+      padding-top: 5%;
+      
     }
 
     .location-image img {
       width: 100%;
-      height: auto;
       box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
-      
     }
 
 
