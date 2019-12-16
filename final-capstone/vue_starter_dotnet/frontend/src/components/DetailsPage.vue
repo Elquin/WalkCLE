@@ -19,6 +19,11 @@
                 </ul>
             </div>
     </div>
+    <div class="checkin-button" >
+      <button v-on:click="checkIn()">
+        Check In
+      </button>
+    </div>
   </div>
 </template>
 
@@ -26,17 +31,17 @@
 export default {
     name: 'details-page',
     data() {
-    return {
-      center: {  },
-      markers: [{
-          position: {
-              lat: 41.503370,
-              lng: -81.639050
-          },
-      }],
-      location: {},
+      return {
+        center: {  },
+        markers: [{
+            position: {
+                lat: 41.503370,
+                lng: -81.639050
+            },
+        }],
+        location: {},
 
-    };
+      };
   },
   mounted: function() {
     this.createMap()
@@ -47,6 +52,23 @@ export default {
     
   },
   methods: {
+    checkIn(){
+        fetch(`${process.env.VUE_APP_REMOTE_API}/checkin`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',         //remember to do
+            Authorization: 'Bearer ' + auth.getToken(),  //remember to do
+          },
+          body: JSON.stringify(this.location.id),
+        })
+          .then((response) => {
+            if (response.ok) {
+              this.$router.push({ path: '/' });
+            }
+          })
+          .catch((err) => console.error(err));
+      
+    },
     fetchUserLocation(){
             navigator.geolocation.getCurrentPosition(pos => {
                 this.userLocation = pos;
@@ -96,10 +118,8 @@ export default {
           position: myLatlng1,
           map: this.map
         });
-             
+    }         
   }
-  }
- 
 }
 </script>
 
