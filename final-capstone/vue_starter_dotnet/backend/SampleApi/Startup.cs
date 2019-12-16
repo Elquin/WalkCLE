@@ -83,6 +83,7 @@ namespace SampleApi
             services.AddSingleton<IPasswordHasher>(ph => new PasswordHasher());
             services.AddTransient<IUserDAO>(m => new UserSqlDAO(Configuration.GetConnectionString("WalkCLE")));
             services.AddTransient<ILocationDAO>(m => new LocationSqlDAO(Configuration.GetConnectionString("WalkCLE")));
+            services.AddTransient<ICheckinDAO>(m => new CheckinSqlDAO(Configuration.GetConnectionString("WalkCLE")));
             
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
