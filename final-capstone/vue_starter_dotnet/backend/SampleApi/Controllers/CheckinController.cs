@@ -14,9 +14,11 @@ namespace SampleApi.Controllers
     public class CheckinController : Controller
     {
         private IUserDAO userDao;
-        public CheckinController(IUserDAO userDao)
+        private ICheckinDAO checkinDao;
+        public CheckinController(IUserDAO userDao, ICheckinDAO checkinDao)
         {
             this.userDao = userDao;
+            this.checkinDao = checkinDao;
         }
 
         [HttpPost]
@@ -24,10 +26,12 @@ namespace SampleApi.Controllers
         public IActionResult AddCheckin(Checkin checkin)
         {
             checkin.UserId = GetCurrentUserId();
-            Console.WriteLine(checkin.UserId);
-            Console.WriteLine(checkin.LocationId);
-            Console.ReadLine();
-            return Ok();
+            bool savedCheckin = checkinDao.StoreCheckin(checkin);
+            if (savedCheckin)
+            {
+                return Ok();
+            }
+            return BadRequest();
         }
 
         private int GetCurrentUserId()
