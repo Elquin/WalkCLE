@@ -1,6 +1,6 @@
 <template>
   <div class="flex-container">
-      <router-link class="flex-item" v-for="location in closestLocationsList" v-bind:key="location.name" tag="div" v-bind:to="{name:'LocationDetails', params: {id: location.id}}">
+      <router-link class="flex-item" v-for="location in filteredLocations" v-bind:key="location.name" tag="div" v-bind:to="{name:'LocationDetails', params: {id: location.id}}">
       <div class="location-image"><img src="@/assets/location-image.jpg"/></div>
           <ul>
            
@@ -22,7 +22,7 @@
 
 export default {
     name: 'nearby-locations-list',
-        props: {
+    props: {
         search: String,
     },
     data(){
@@ -34,11 +34,12 @@ export default {
     },
     computed: {
         filteredLocations() {
+            console.log('filtering query');
             const filter = new RegExp(this.search,'i');
             let arr1 = this.locationsList.filter(location => location.name.match(filter));
             let arr2 = this.locationsList.filter(location => location.longDescription.match(filter));
             arr1.concat(arr2);
-            // let arr3 = this.locationsList.filter(location => location.category.match(filter));
+            // let arr3 = this.locationsList.filter(location => location.category.filter(cat => cat.filter.match(filter)));
             // arr1.concat(arr3);
             return Array.from(new Set(arr1));
       }

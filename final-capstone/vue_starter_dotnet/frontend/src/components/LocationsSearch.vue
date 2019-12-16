@@ -11,19 +11,11 @@
 
 <script>
 export default {
-      search: '',
-      name: 'list-locations',
-    data(){
-        return {
-            locationsList: []
-        }
-    },
-    created() {
-        this.filterLocations()
-    },
+    name: 'location-search',
     methods: {
         filterLocations(){
           const query = document.getElementById('search-bar').value;
+          console.log('search bar query ' + query);
           this.$emit('filter-locations', query);
         }
     }
