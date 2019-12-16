@@ -126,30 +126,7 @@ export default {
           map: this.map,
           animation: google.maps.Animation.DROP,
         });
-<<<<<<< HEAD
-        
-                 
-    },
-    calculateAndDisplayRoute(directionsService, directionsRenderer){
-        var destinationLatlng = new google.maps.LatLng(41.5111, -81.6096);
-        var start = myLatlng1
-        var end = destinationLatlng
-        directionsService.route({
-          origin: start,
-          destination: end,
-          travelMode: 'WALKING'
-        }, function(response, status){
-          if(status === 'OK') {
-            directionsRenderer.setDirections(response);
-          } else {
-            window.alert('Directions request failed due to ' + status);
-          }
-        });
-
-    }
-=======
     }         
->>>>>>> ebdb9bc6ecf821c6e9186a8da1bd4c6958107029
   }
 }
 </script>
