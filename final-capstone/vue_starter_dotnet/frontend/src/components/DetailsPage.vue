@@ -16,14 +16,15 @@
                     <li><img class="icon" src="@/assets/icons/phone.png"/> {{location.phoneNumber}}</li>
                     <li><img class="icon" src="@/assets/icons/globe.png"/> <a :href="location.websiteURL">{{location.websiteURL}}</a></li>
                     <li><img id="money" v-for="n in location.priceLevel" v-bind:key="n.priceLevel" src="@/assets/money.png"/></li>
+                    <div class="checkin-button" >
+                            <button v-on:click="checkIn()">
+                        Check In
+                      </button>
+                    </div>
                 </ul>
             </div>
     </div>
-    <div class="checkin-button" >
-      <button v-on:click="checkIn()">
-        Check In
-      </button>
-    </div>
+    
   </div>
 </template>
 
@@ -182,7 +183,8 @@ export default {
 } */
 
 .grid-container {
-    
+    z-index: 51;
+    margin-top: 40px;
     display: grid;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
@@ -196,18 +198,27 @@ export default {
 
 
 #map-container {
-    /* z-index: -50; */
+    z-index: 51;
     background-color: white;
     border-radius: 10px;
     grid-area: map;
     text-align: center;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
+    height:479px;
     
 }
 
 #directions-box {
+  z-index: 51;
   grid-area: directions;
-}
+  background-color: white;
+  height:479px;
+  overflow-y:scroll;
+  }
+
+
+
+
 
 /* #map {
     width: 100%;
@@ -215,7 +226,7 @@ export default {
 } */
 
 .details-card {
-    z-index: -50;
+    z-index: 51;
     background-color: white;
     border-radius: 10px;
     grid-area: details;
@@ -241,5 +252,23 @@ export default {
   width: 30px;
   margin-top: 5px;
 }
+
+.checkin-button button{
+  background-color: #5f0101;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.checkin-button:hover button{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  cursor: pointer;
+}
+
 
 </style>

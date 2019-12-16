@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="container">
-      <locations-search v-on:filter-locations="handleSearch"></locations-search>
+      <locations-search class="search-bar" v-on:filter-locations="handleSearch"></locations-search>
       <div id="nav">
         <div id="icon1">
           <router-link class="icons" :to="{ name: 'home' }" exact><img src="@/assets/logoIcon.png"/></router-link>
@@ -55,6 +55,9 @@ export default {
 </script>
 
 <style scoped>
+  .search-bar {
+    z-index: 100;
+  }
 
   #container {
     position: absolute;
@@ -67,7 +70,7 @@ export default {
 
   #app {
     margin-top: 40px;
-    z-index: -101;
+    z-index: 50;
   }
 
 
