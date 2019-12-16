@@ -28,6 +28,10 @@
 </template>
 
 <script>
+<<<<<<< HEAD
+=======
+import auth from '@/auth';
+>>>>>>> 476af9e5ce7d41490d003486cfe210315b1acd9f
 export default {
     name: 'details-page',
     data() {
@@ -58,17 +62,18 @@ export default {
   },
   methods: {
     checkIn(){
+        this.location.locationId = this.location.id;
         fetch(`${process.env.VUE_APP_REMOTE_API}/checkin`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',         //remember to do
             Authorization: 'Bearer ' + auth.getToken(),  //remember to do
           },
-          body: JSON.stringify(this.location.id),
+          body: JSON.stringify(this.location),
         })
           .then((response) => {
             if (response.ok) {
-              this.$router.push({ path: '/' });
+              //this.$router.push({ path: `/` });
             }
           })
           .catch((err) => console.error(err));

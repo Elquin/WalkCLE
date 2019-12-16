@@ -35,6 +35,10 @@ export default {
 
 <style scoped>
 
+.container {
+  margin-top: 40px;
+}
+
 .nearbylocations > h1{
     background-image: url('../assets/nearby-tab-background.png');
     text-align: center;

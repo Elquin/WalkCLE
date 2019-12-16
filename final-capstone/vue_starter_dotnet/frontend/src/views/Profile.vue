@@ -40,6 +40,7 @@
 <style scoped>
 /* #region Content */
 .grid-container {
+    margin-top: 40px;
     display: grid;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
