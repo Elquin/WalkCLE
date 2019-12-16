@@ -5,37 +5,46 @@
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         There were problems registering this user.
       </div>
-      <label for="username" class="sr-only">Username</label>
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        placeholder="Username"
-        v-model="user.username"
-        required
-        autofocus
-      />
-      <label for="password" class="sr-only">Password</label>
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      />
-      <input
-        type="password"
-        id="confirmPassword"
-        class="form-control"
-        placeholder="Confirm Password"
-        v-model="user.confirmPassword"
-        required
-      />
-      <router-link :to="{ name: 'login' }">
+      <div id="username-block">
+        <label for="username" class="sr-only">Username </label>
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          placeholder="Username"
+          v-model="user.username"
+          required
+          autofocus
+        />
+      </div>
+      <div id="password-block">
+        <div id="password-input">
+          <label for="password" class="sr-only">Password </label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            placeholder="Password"
+            v-model="user.password"
+            required
+          />
+        </div>
+        <div id="password-confirm">
+          <label for="confirmPassword" class="sr-only">Password </label>
+          <input
+            type="password"
+            id="confirmPassword"
+            class="form-control"
+            placeholder="Confirm Password"
+            v-model="user.confirmPassword"
+            required
+          />
+        </div>
+      </div>
+      <router-link class="register-link" :to="{ name: 'login' }">
         Have an account?
       </router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <button id="create-button" class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
     </form>
@@ -81,4 +90,56 @@ export default {
 </script>
 
 <style>
+
+    #register {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      background-color: white;
+      width:fit-content;
+      padding: 25px;
+      display: flex;
+      box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
+      border-radius: 10px;
+      margin: 180px auto 0px auto;
+      
+    }
+
+    form {
+      text-align: center;
+    }
+
+    .h3 {
+      margin-top: 0px;
+    }
+
+    #username-block {
+      text-align: right;
+    }
+
+    #password-block {
+      text-align: right;
+    }
+
+    #password-input {
+      display: inline;
+    }
+
+    #password-confirm {
+      display: block;
+    }
+
+    .register-link {
+      display: block;
+      text-align: center;
+    }
+
+    #create-button button {
+      display: block;
+      text-align: center;
+    }
+
+    a {}
+
+    a:visited {  text-decoration: none;}
 </style>
