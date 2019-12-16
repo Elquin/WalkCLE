@@ -8,27 +8,31 @@
       <div class="alert alert-success" role="alert" v-if="this.$route.query.registration">
         Thank you for registering, please sign in.
       </div>
-      <label for="username" class="sr-only">Username</label>
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        placeholder="Username"
-        v-model="user.username"
-        required
-        autofocus
-      />
-      <label for="password" class="sr-only">Password</label>
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
+      <div id="username-block">
+        <label for="username" class="sr-only">Username </label>
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          placeholder="Username"
+          v-model="user.username"
+          required
+          autofocus
+        />
+      </div>
+      <div id="password-block">
+        <label for="password" class="sr-only">Password </label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          placeholder="Password"
+          v-model="user.password"
+          required
+        />
+      </div>
+      <router-link class="register-link" :to="{ name: 'register' }">Need an account?</router-link>
+      <button id="submit-button" type="submit">Sign in</button>
     </form>
   </div>
 </template>
@@ -82,5 +86,59 @@ export default {
 </script>
 
 <style>
+
+    #login {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      background-color: white;
+      width:fit-content;
+      padding: 25px;
+      display: flex;
+      box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
+      border-radius: 10px;
+      margin: 180px auto 0px auto;
+      
+    }
+
+    form {
+      text-align: center;
+    }
+
+    .h3 {
+      margin-top: 0px;
+    }
+
+    #username-block {
+      text-align: right;
+    }
+
+    #password-block {
+      text-align: right;
+    }
+
+    .register-link {
+      display: block;
+      text-align: center;
+    }
+
+    #submit-button button {
+      display: block;
+      text-align: center;
+    }
+
+    .alert {
+      color: red;
+      font-style: italic;
+    }
+
+    .alert-success {
+      color: green;
+      font-style: italic;
+    }
+
+    a {}
+
+    a:visited {  text-decoration: none;}
 
 </style>

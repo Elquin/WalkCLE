@@ -2,6 +2,7 @@
   
   <div class="grid-container">
     <div id="map-container"></div>
+    <div id="directions-box"></div>
       <!-- <gmap-map id="map" :center="center" :zoom="13">
             <gmap-marker v-for="m in markers" v-bind:key="m.position" :position="m.position"/>
       </gmap-map>
@@ -18,6 +19,11 @@
                 </ul>
             </div>
     </div>
+    <div class="checkin-button" >
+      <button v-on:click="checkIn()">
+        Check In
+      </button>
+    </div>
   </div>
 </template>
 
@@ -26,6 +32,7 @@ export default {
     name: 'details-page',
     data() {
     return {
+      center: {  },
       markers: [{
           position: {
               lat: 41.503370,
@@ -45,9 +52,28 @@ export default {
     
   },
   methods: {
+    checkIn(){
+        fetch(`${process.env.VUE_APP_REMOTE_API}/checkin`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',         //remember to do
+            Authorization: 'Bearer ' + auth.getToken(),  //remember to do
+          },
+          body: JSON.stringify(this.location.id),
+        })
+          .then((response) => {
+            if (response.ok) {
+              this.$router.push({ path: '/' });
+            }
+          })
+          .catch((err) => console.error(err));
+      }
+    },
     fetchUserLocation(){
             navigator.geolocation.getCurrentPosition(pos => {
                 this.userLocation = pos;
+                let userLat = this.userLocation.coords.latitude;
+                let userLong = this.userLocation.coords.longitude;
                 console.log(this.userLocation);
             }, err => {
                 this.errorStr = err.message;
@@ -73,32 +99,35 @@ export default {
         )
     },
     createMap() {
-        
-        var userLocation = new google.maps.LatLng(this.markers[0].position.lat, this.markers[0].position.lng);
+        var myLatlng1 = new google.maps.LatLng(41.503370, -81.639050);
+        var directionsRenderer = new google.maps.DirectionsRenderer;
+        var directionsService = new google.maps.DirectionsService;
         console.log("map: ", google.maps)
             this.map = new google.maps.Map(document.getElementById('map-container'), {
-            center: userLocation,
+            center: myLatlng1,
             scrollwheel: true,
             zoom: 15,
-            disableDefaultUI: true
-            }) 
+            mapTypeControlOptions: {
+              style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+              mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain']
+              }
+            })
+        directionsRenderer.setMap(this.map);
+        directionsRenderer.setPanel(document.getElementById('directions-box'));
         var marker = new google.maps.Marker({
-          position: userLocation,
-          map: this.map,
-          draggable: true,
-          animation: google.maps.Animation.DROP,
-        });     
+          position: myLatlng1,
+          map: this.map
+        });
+    }         
   }
-  }
- 
-}
+
 </script>
 
 <style scoped>
-#map {
+/* #map {
     width:300px;  
     height: 300px;
-}
+} */
 
 .grid-container {
     
@@ -108,25 +137,30 @@ export default {
     grid-template-columns: 1fr 2fr 2fr 1fr;
     grid-template-rows: 4fr 3fr;
     grid-template-areas: 
-        '. map map .'
+        '. map directions .'
         '. details details .';
         
 }
 
 
 #map-container {
-    z-index: -50;
+    /* z-index: -50; */
     background-color: white;
     border-radius: 10px;
     grid-area: map;
     text-align: center;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
+    
 }
 
-#map {
+#directions-box {
+  grid-area: directions;
+}
+
+/* #map {
     width: 100%;
     height: 100%;
-}
+} */
 
 .details-card {
     z-index: -50;
