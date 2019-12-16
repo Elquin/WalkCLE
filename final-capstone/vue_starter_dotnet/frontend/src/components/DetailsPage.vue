@@ -36,10 +36,6 @@
 
 <script>
 import auth from '@/auth';
-<<<<<<< HEAD
-
-=======
->>>>>>> 28ebd90962ea058f34613fee8bd5085e2f0c52ce
 export default {
     name: 'details-page',
     data() {
@@ -258,12 +254,6 @@ export default {
   margin-top: 5px;
 }
 
-<<<<<<< HEAD
-.checkin-button {
-  margin-top: 50px;
-  padding-top: 50px;
-}
-=======
 #floating-panel {
         position: absolute;
         top: 10px;
@@ -277,5 +267,4 @@ export default {
         line-height: 30px;
         padding-left: 10px;
       }
->>>>>>> 78825d2634cba3a50ee336f33468766a9d2d95f4
 </style>
