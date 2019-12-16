@@ -36,7 +36,10 @@
 
 <script>
 import auth from '@/auth';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 28ebd90962ea058f34613fee8bd5085e2f0c52ce
 export default {
     name: 'details-page',
     data() {
