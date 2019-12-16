@@ -1,6 +1,13 @@
 <template>
   
   <div class="grid-container">
+    <div id="floating-panel">
+    <b>Mode of Travel: </b>
+    <select id="mode">
+      <option value="DRIVING">Driving</option>
+      <option value="WALKING">Walking</option>
+    </select>
+    </div>
     <div id="map-container"></div>
     <div id="directions-box"></div>
       <!-- <gmap-map id="map" :center="center" :zoom="13">
@@ -29,23 +36,31 @@
 
 <script>
 import auth from '@/auth';
+<<<<<<< HEAD
+
+=======
+>>>>>>> 28ebd90962ea058f34613fee8bd5085e2f0c52ce
 export default {
     name: 'details-page',
     data() {
       return {
         center: {  },
-        markers: [{
-            position: {
-                lat: 41.503370,
-                lng: -81.639050
-            },
-        }],
+        // markers: [{
+        //     position: {
+        //         lat: 41.503370,
+        //         lng: -81.639050
+        //     },
+        // }],
         location: {},
-        map: ''
+        map: '',
+        userLat: '',
+        userLong: ''
       };
   },
   mounted () {
-    this.createMap()
+    // this.fetchUserLocation();
+    // this.createMap();
+    // this.getLocation(this.$route.params.id);
   },
   created() {
     this.fetchUserLocation();
@@ -72,16 +87,32 @@ export default {
           .catch((err) => console.error(err));
       
     },
+    
     fetchUserLocation(){
-            navigator.geolocation.getCurrentPosition(pos => {
-                this.userLocation = pos;
-                let userLat = this.userLocation.coords.latitude;
-                let userLong = this.userLocation.coords.longitude;
-                console.log(this.userLocation);
-            }, err => {
-                this.errorStr = err.message;
-            })
-        },
+            navigator.geolocation.getCurrentPosition(this.locationSuccess, this.error, {enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0} )
+            // navigator.geolocation.getCurrentPosition(pos => {
+                // this.userLocation = pos;
+                // this.userLat = this.userLocation.coords.latitude;
+                // this.userLong = this.userLocation.coords.longitude;
+                // console.log('fetched location: ' + this.userLocation);
+                // console.log('fetched lat: ' + this.userLat);
+                // console.log('fetched long: ' + this.userLong);
+            },
+    error () {
+      errorStr = err.message;
+      },
+    locationSuccess (pos){
+      const crd = pos.coords;
+      this.userLocation = pos;
+      this.userLat = this.userLocation.coords.latitude;
+      this.userLong = this.userLocation.coords.longitude;
+      console.log('fetched location: ' + this.userLocation);
+      console.log('fetched lat: ' + this.userLat);
+      console.log('fetched long: ' + this.userLong);
+      this.createMap();
+    },
     getLocation(id) {
         fetch(`${process.env.VUE_APP_REMOTE_API}/locations/${id}`)
         .then((response) => {
@@ -102,14 +133,17 @@ export default {
         )
     },
     createMap () {
-        const myLatlng1 = new google.maps.LatLng(41.503370, -81.639050);
+        // this.fetchUserLocation();
+        // const userLocation = new google.maps.LatLng(41.503370, -81.639050);
+        console.log('CreateMap User Lat: ' + this.userLat);
+        console.log('CreateMap User Long: ' + this.userLong);
+        const userLocation = new google.maps.LatLng(this.userLat, this.userLong);
         const directionsRenderer = new google.maps.DirectionsRenderer;
         const directionsService = new google.maps.DirectionsService;
 
-
         console.log("map: ", google.maps)
             this.map = new google.maps.Map(document.getElementById('map-container'), {
-            center: myLatlng1,
+            center: userLocation,
             scrollwheel: true,
             zoom: 15,
             mapTypeControlOptions: {
@@ -121,25 +155,29 @@ export default {
         directionsRenderer.setMap(this.map);
         directionsRenderer.setPanel(document.getElementById('directions-box'));
         
-        this.calculateAndDisplayRoute(directionsService, directionsRenderer, myLatlng1);
-
-        
+        this.calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation);
+        document.getElementById('mode').addEventListener('change', function() {
+          this.calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation);
+        });
 
         // const marker = new google.maps.Marker({
-        //   position: myLatlng1,
+        //   position: userLocation,
         //   map: this.map,
         //   animation: google.maps.Animation.DROP,
         // });
     },
-    calculateAndDisplayRoute(directionsService, directionsRenderer, myLatlng1){
-        // const destinationLatlng = new google.maps.LatLng({lat: 41.5111, lng:-81.6096});
-        const destinationLatlng = new google.maps.LatLng(41.5111, -81.6096);
-        const start = myLatlng1
+    calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation){
+        // const destinationLatlng = 'Cleveland Botanical Garden';
+        console.log('Details Name: ' + location.name)
+        const destinationLatlng = 'Playhouse Square';
+        const start = userLocation
         const end = destinationLatlng
+        const selectedMode = document.getElementById('mode').value;
         directionsService.route({
           origin: start,
           destination: end,
-          travelMode: 'WALKING'
+          // travelMode: 'WALKING',
+          travelMode: google.maps.TravelMode[selectedMode],
         }, function(response, status){
           if(status === 'OK') {
             directionsRenderer.setDirections(response);
@@ -220,8 +258,24 @@ export default {
   margin-top: 5px;
 }
 
+<<<<<<< HEAD
 .checkin-button {
   margin-top: 50px;
   padding-top: 50px;
 }
+=======
+#floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+>>>>>>> 78825d2634cba3a50ee336f33468766a9d2d95f4
 </style>

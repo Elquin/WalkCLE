@@ -78,6 +78,9 @@ export default {
     left: 0;
     right: 0;
     z-index: -100;
+    /* Silhouette shadow yes/no? */
+    -webkit-filter: drop-shadow(2px 2px 8px rgba(0,0,0,0.5));
+    
   }
 
   #nav {
