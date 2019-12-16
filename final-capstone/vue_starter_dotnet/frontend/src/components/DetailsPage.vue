@@ -1,6 +1,13 @@
 <template>
   
   <div class="grid-container">
+    <div id="floating-panel">
+    <b>Mode of Travel: </b>
+    <select id="mode">
+      <option value="DRIVING">Driving</option>
+      <option value="WALKING">Walking</option>
+    </select>
+    </div>
     <div id="map-container"></div>
     <div id="directions-box"></div>
       <!-- <gmap-map id="map" :center="center" :zoom="13">
@@ -28,10 +35,8 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-=======
 import auth from '@/auth';
->>>>>>> 476af9e5ce7d41490d003486cfe210315b1acd9f
+
 export default {
     name: 'details-page',
     data() {
@@ -148,6 +153,9 @@ export default {
         directionsRenderer.setPanel(document.getElementById('directions-box'));
         
         this.calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation);
+        document.getElementById('mode').addEventListener('change', function() {
+          this.calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation);
+        });
 
         // const marker = new google.maps.Marker({
         //   position: userLocation,
@@ -158,13 +166,15 @@ export default {
     calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation){
         // const destinationLatlng = 'Cleveland Botanical Garden';
         console.log('Details Name: ' + location.name)
-        const destinationLatlng = 'Chicago, Il';
+        const destinationLatlng = 'Playhouse Square';
         const start = userLocation
         const end = destinationLatlng
+        const selectedMode = document.getElementById('mode').value;
         directionsService.route({
           origin: start,
           destination: end,
-          travelMode: 'WALKING'
+          // travelMode: 'WALKING',
+          travelMode: google.maps.TravelMode[selectedMode],
         }, function(response, status){
           if(status === 'OK') {
             directionsRenderer.setDirections(response);
@@ -245,4 +255,17 @@ export default {
   margin-top: 5px;
 }
 
+#floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
 </style>
