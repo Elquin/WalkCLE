@@ -1,20 +1,22 @@
 <template>
   <div id="app">
-    <locations-search v-on:filter-locations="handleSearch"></locations-search>
-    <div id="nav">
-      <div id="icon1">
-        <router-link class="icons" :to="{ name: 'home' }" exact><img src="@/assets/logoIcon.png"/></router-link>
+    <div id="background-color">
+      <locations-search v-on:filter-locations="handleSearch"></locations-search>
+      <div id="nav">
+        <div id="icon1">
+          <router-link class="icons" :to="{ name: 'home' }" exact><img src="@/assets/logoIcon.png"/></router-link>
+        </div>
+        <div id="icon2">
+          <router-link class="icons" :to="{ name: 'profile' }" exact><img src=@/assets/user.png/></router-link>
+        </div>
+        <div id="icon3">
+          <router-link class="icons" :to="{ name: 'NearbyLocations' }" exact><img src="@/assets/gpsButton.png"/></router-link>
+        </div>
       </div>
-      <div id="icon2">
-        <router-link class="icons" :to="{ name: 'profile' }" exact><img src=@/assets/user.png/></router-link>
+      <router-view class="content"/>
+      <div id="silhouette">
+          <img src="@/assets/silhouette.svg"/>
       </div>
-      <div id="icon3">
-        <router-link class="icons" :to="{ name: 'NearbyLocations' }" exact><img src="@/assets/gpsButton.png"/></router-link>
-      </div>
-    </div>
-    <router-view class="content"/>
-    <div id="silhouette">
-        <img src="@/assets/silhouette.svg"/>
     </div>
   </div>
 </template>
@@ -52,9 +54,19 @@ export default {
 </script>
 
 <style scoped>
+  #background-color {
+    background-color: green;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -102;
+  }
+
   #app {
     margin-top: 40px;
-    z-index: -101
+    z-index: -101;
   }
 
   #silhouette img {
