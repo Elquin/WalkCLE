@@ -28,10 +28,7 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-=======
 import auth from '@/auth';
->>>>>>> 476af9e5ce7d41490d003486cfe210315b1acd9f
 export default {
     name: 'details-page',
     data() {
