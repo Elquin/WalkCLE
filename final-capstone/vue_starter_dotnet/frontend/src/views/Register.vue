@@ -139,6 +139,10 @@ export default {
       text-align: center;
     }
 
+    .alert {
+      color: red;
+    }
+
     a {}
 
     a:visited {  text-decoration: none;}

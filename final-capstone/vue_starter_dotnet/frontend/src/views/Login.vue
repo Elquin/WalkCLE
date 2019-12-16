@@ -127,6 +127,16 @@ export default {
       text-align: center;
     }
 
+    .alert {
+      color: red;
+      font-style: italic;
+    }
+
+    .alert-success {
+      color: green;
+      font-style: italic;
+    }
+
     a {}
 
     a:visited {  text-decoration: none;}
