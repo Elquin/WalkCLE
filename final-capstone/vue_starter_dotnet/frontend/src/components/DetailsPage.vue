@@ -31,17 +31,17 @@
 export default {
     name: 'details-page',
     data() {
-    return {
-      center: {  },
-      markers: [{
-          position: {
-              lat: 41.503370,
-              lng: -81.639050
-          },
-      }],
-      location: {},
+      return {
+        center: {  },
+        markers: [{
+            position: {
+                lat: 41.503370,
+                lng: -81.639050
+            },
+        }],
+        location: {},
 
-    };
+      };
   },
   mounted: function() {
     this.createMap()
@@ -67,7 +67,7 @@ export default {
             }
           })
           .catch((err) => console.error(err));
-      }
+      
     },
     fetchUserLocation(){
             navigator.geolocation.getCurrentPosition(pos => {
@@ -120,7 +120,7 @@ export default {
         });
     }         
   }
-
+}
 </script>
 
 <style scoped>
