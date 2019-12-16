@@ -18,6 +18,11 @@
                 </ul>
             </div>
     </div>
+    <div class="checkin-button" >
+      <button v-on:click="checkIn()">
+        Check In
+      </button>
+    </div>
   </div>
 </template>
 
@@ -45,6 +50,23 @@ export default {
     
   },
   methods: {
+    checkIn(){
+        fetch(`${process.env.VUE_APP_REMOTE_API}/checkin`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',         //remember to do
+            Authorization: 'Bearer ' + auth.getToken(),  //remember to do
+          },
+          body: JSON.stringify(this.location.id),
+        })
+          .then((response) => {
+            if (response.ok) {
+              this.$router.push({ path: '/' });
+            }
+          })
+          .catch((err) => console.error(err));
+      }
+    },
     fetchUserLocation(){
             navigator.geolocation.getCurrentPosition(pos => {
                 this.userLocation = pos;
@@ -88,10 +110,9 @@ export default {
           draggable: true,
           animation: google.maps.Animation.DROP,
         });     
+    }
   }
-  }
- 
-}
+
 </script>
 
 <style scoped>
