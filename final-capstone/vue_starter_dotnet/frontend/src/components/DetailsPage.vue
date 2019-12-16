@@ -44,20 +44,12 @@ export default {
                 lng: -81.639050
             },
         }],
-<<<<<<< HEAD
-        location: {}
-      };
-  },
-  mounted: function() {
-    this.createMap();
-=======
         location: {},
         map: ''
       };
   },
   mounted () {
     this.createMap()
->>>>>>> e6a075b8b14d22aa6331704949c4b963f487e06f
   },
   created() {
     this.fetchUserLocation();
