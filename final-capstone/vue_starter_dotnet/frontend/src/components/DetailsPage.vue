@@ -28,7 +28,11 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import auth from '@/auth';
+=======
+
+>>>>>>> e6a075b8b14d22aa6331704949c4b963f487e06f
 export default {
     name: 'details-page',
     data() {
@@ -40,15 +44,25 @@ export default {
                 lng: -81.639050
             },
         }],
+<<<<<<< HEAD
         location: {}
       };
   },
   mounted: function() {
     this.createMap();
+=======
+        location: {},
+        map: ''
+      };
+  },
+  mounted () {
+    this.createMap()
+>>>>>>> e6a075b8b14d22aa6331704949c4b963f487e06f
   },
   created() {
     this.fetchUserLocation();
     this.getLocation(this.$route.params.id);
+    // this.createMap();
     
   },
   methods: {
@@ -99,10 +113,12 @@ export default {
           }
         )
     },
-    createMap() {
-        var myLatlng1 = new google.maps.LatLng(41.503370, -81.639050);
-        var directionsRenderer = new google.maps.DirectionsRenderer;
-        var directionsService = new google.maps.DirectionsService;
+    createMap () {
+        const myLatlng1 = new google.maps.LatLng(41.503370, -81.639050);
+        const directionsRenderer = new google.maps.DirectionsRenderer;
+        const directionsService = new google.maps.DirectionsService;
+
+
         console.log("map: ", google.maps)
             this.map = new google.maps.Map(document.getElementById('map-container'), {
             center: myLatlng1,
@@ -113,13 +129,38 @@ export default {
               mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain']
               }
             })
+
         directionsRenderer.setMap(this.map);
         directionsRenderer.setPanel(document.getElementById('directions-box'));
-        var marker = new google.maps.Marker({
-          position: myLatlng1,
-          map: this.map
+        
+        this.calculateAndDisplayRoute(directionsService, directionsRenderer, myLatlng1);
+
+        
+
+        // const marker = new google.maps.Marker({
+        //   position: myLatlng1,
+        //   map: this.map,
+        //   animation: google.maps.Animation.DROP,
+        // });
+    },
+    calculateAndDisplayRoute(directionsService, directionsRenderer, myLatlng1){
+        // const destinationLatlng = new google.maps.LatLng({lat: 41.5111, lng:-81.6096});
+        const destinationLatlng = new google.maps.LatLng(41.5111, -81.6096);
+        const start = myLatlng1
+        const end = destinationLatlng
+        directionsService.route({
+          origin: start,
+          destination: end,
+          travelMode: 'WALKING'
+        }, function(response, status){
+          if(status === 'OK') {
+            directionsRenderer.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
         });
-    }         
+
+    }
   }
 }
 </script>
