@@ -1,20 +1,19 @@
 <template>
   <div class="flex-container">
-    <div class="cards">
-        <router-link class="flex-item" v-for="location in filteredLocations" v-bind:key="location.name" tag="div" v-bind:to="{name:'LocationDetails', params: {id: location.id}}">
-        <div class="location-image"><img src="@/assets/location-image.jpg"/></div>
-            <ul class="location-details">
-            
-                <li >
-                    
-                    <h3>{{location.name}}</h3>
-                    <p>{{location.shortDescription}}</p>
-                    <p>{{location.address}}</p>
-                    
-                </li>
-            </ul>
-        </router-link>
-    </div>
+      <router-link class="flex-item" v-for="location in closestLocationsList" v-bind:key="location.name" tag="div" v-bind:to="{name:'LocationDetails', params: {id: location.id}}">
+      <div class="location-image"><img src="@/assets/location-image.jpg"/></div>
+          <ul>
+           
+              <li >
+                  
+                  <h3>{{location.name}}</h3>
+                  <p>{{location.shortDescription}}</p>
+                  <p>{{location.address}}</p>
+                  
+              </li>
+             
+          </ul>
+          </router-link>
   </div>
 </template>
 
@@ -37,10 +36,10 @@ export default {
         filteredLocations() {
             console.log('filtering query');
             const filter = new RegExp(this.search,'i');
-            let arr1 = this.locationsList.filter(location => location.name.match(filter));
-            let arr2 = this.locationsList.filter(location => location.longDescription.match(filter));
+            let arr1 = this.closestLocationsList.filter(location => location.name.match(filter));
+            let arr2 = this.closestLocationsList.filter(location => location.longDescription.match(filter));
             arr1.concat(arr2);
-            // let arr3 = this.locationsList.filter(location => location.category.filter(cat => cat.filter.match(filter)));
+            // let arr3 = this.closestLocationsList.filter(location => location.category.filter(cat => cat.filter.match(filter)));
             // arr1.concat(arr3);
             return Array.from(new Set(arr1));
       }
