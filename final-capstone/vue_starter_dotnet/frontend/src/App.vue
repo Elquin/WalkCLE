@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div id="background-color">
+    <div id="container">
       <locations-search v-on:filter-locations="handleSearch"></locations-search>
       <div id="nav">
         <div id="icon1">
@@ -51,11 +51,12 @@ export default {
       }
   }
 }
+
 </script>
 
 <style scoped>
-  #background-color {
-    background-color: green;
+
+  #container {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -68,6 +69,7 @@ export default {
     margin-top: 40px;
     z-index: -101;
   }
+
 
   #silhouette img {
     width: 100%;
