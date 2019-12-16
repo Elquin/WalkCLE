@@ -3,18 +3,20 @@
         <locations-search v-on:filter-locations="handleSearch"></locations-search>
         <div class="nearbylocations">
             <h1>Nearby Locations</h1>
-            <nearby-locations-list v-bind:search="search" ></nearby-locations-list>       
+            <nearby-locations-list v-bind:search="search" ></nearby-locations-list>
         </div>
     </div>
 </template>
 
 <script>
 import NearbyLocationsList from '@/components/NearbyLocationsList'
+import LocationsSearch from '@/components/LocationsSearch'
 
 export default {
-    name: 'nearbyLocations',
+    name: 'nearby-locations',
     components: {
-        NearbyLocationsList
+        NearbyLocationsList,
+        LocationsSearch
     },
       data() {
     return {
