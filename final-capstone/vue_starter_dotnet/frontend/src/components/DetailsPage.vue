@@ -1,10 +1,11 @@
 <template>
+  
   <div class="grid-container">
-    <div class="map-container">
-      <gmap-map id="map" :center="center" :zoom="13">
+    <div id="map-container"></div>
+      <!-- <gmap-map id="map" :center="center" :zoom="13">
             <gmap-marker v-for="m in markers" v-bind:key="m.position" :position="m.position"/>
       </gmap-map>
-    </div>
+    </div> -->
     <div class="details-card">
         <div class="location-title"><h3>{{location.name}}</h3></div>
             <div class="details-content">
@@ -21,37 +22,37 @@
 </template>
 
 <script>
-
-
 export default {
     name: 'details-page',
     data() {
     return {
-      center: {  },
       markers: [{
           position: {
               lat: 41.503370,
               lng: -81.639050
           },
       }],
-      location: [],
+      location: {},
+
     };
   },
-
-  created() {
-    this.geolocate();
-    this.getLocation(this.$route.params.id);
+  mounted: function() {
+    this.createMap()
   },
-
+  created() {
+    this.fetchUserLocation();
+    this.getLocation(this.$route.params.id);
+    
+  },
   methods: {
-    geolocate() {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.center = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-      });
-    },
+    fetchUserLocation(){
+            navigator.geolocation.getCurrentPosition(pos => {
+                this.userLocation = pos;
+                console.log(this.userLocation);
+            }, err => {
+                this.errorStr = err.message;
+            })
+        },
     getLocation(id) {
         fetch(`${process.env.VUE_APP_REMOTE_API}/locations/${id}`)
         .then((response) => {
@@ -70,8 +71,26 @@ export default {
           console.log(err);
           }
         )
-    }
+    },
+    createMap() {
+        
+        var userLocation = new google.maps.LatLng(this.markers[0].position.lat, this.markers[0].position.lng);
+        console.log("map: ", google.maps)
+            this.map = new google.maps.Map(document.getElementById('map-container'), {
+            center: userLocation,
+            scrollwheel: true,
+            zoom: 15,
+            disableDefaultUI: true
+            }) 
+        var marker = new google.maps.Marker({
+          position: userLocation,
+          map: this.map,
+          draggable: true,
+          animation: google.maps.Animation.DROP,
+        });     
   }
+  }
+ 
 }
 </script>
 
@@ -95,7 +114,7 @@ export default {
 }
 
 
-.map-container {
+#map-container {
     z-index: -50;
     background-color: white;
     border-radius: 10px;
