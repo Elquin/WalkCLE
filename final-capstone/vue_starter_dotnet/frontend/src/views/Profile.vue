@@ -4,7 +4,7 @@
         <div class="portrait-top">
             <img src="@/assets/user.png">
         </div>
-        <h3>{{ User.Username }}</h3>
+        <h3>Test Name</h3>
     </div>
     <div class="history-card">
         <div class="history-title"><h3>Location History</h3></div>
