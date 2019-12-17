@@ -13,10 +13,6 @@
                     <li v-for="location in checkinHistory" v-bind:key="location">
                         {{location}}
                     </li>
-                    <li>Location 1</li>
-                    <li>Location 2</li>
-                    <li>Location 3</li>
-                    <li>Location 4</li>
                 </ul>
             </div>
     </div>
