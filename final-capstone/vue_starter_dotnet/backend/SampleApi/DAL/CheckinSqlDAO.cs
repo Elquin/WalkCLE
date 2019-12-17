@@ -24,10 +24,11 @@ namespace SampleApi.DAL
                 {
                     conn.Open();
 
-                    string sql = $"INSERT INTO CheckIn (UserId, LocationId) VALUES (@userId, @locationId);";
+                    string sql = $"INSERT INTO CheckIn (UserId, LocationId, CheckInDate) VALUES (@userId, @locationId, @checkInDate);";
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@userId", checkin.UserId);
                     cmd.Parameters.AddWithValue("@locationId", checkin.LocationId);
+                    cmd.Parameters.AddWithValue("@checkInDate", DateTime.Now);
                     cmd.ExecuteScalar();
                     return true;
                 }

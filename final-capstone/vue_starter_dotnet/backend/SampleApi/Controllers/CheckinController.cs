@@ -34,6 +34,13 @@ namespace SampleApi.Controllers
             return BadRequest();
         }
 
+        [HttpGet]
+        [Authorize]
+        public IActionResult GetUserCheckinHistory()
+        {
+            return Ok();
+        }
+
         private int GetCurrentUserId()
         {
             return userDao.GetUser(base.User.Identity.Name).Id;

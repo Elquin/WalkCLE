@@ -1,7 +1,7 @@
 <template>
   
   <div class="grid-container">
-    
+    <div id="heading"><h3>{{location.name}}</h3></div>
     <!-- DropDown not registering -->
     <div id="floating-panel">
     <b>Mode of Travel: </b>
@@ -17,7 +17,6 @@
       </gmap-map>
     </div> -->
     <div class="details-card">
-        <div class="location-title"><h3>{{location.name}}</h3></div>
             <div class="details-content">
                 <ul>
                     <li class="description">{{location.longDescription}}</li>
@@ -25,7 +24,7 @@
                     <li><img class="icon" src="@/assets/icons/phone.png"/> {{location.phoneNumber}}</li>
                     <li><img class="icon" src="@/assets/icons/globe.png"/> <a :href="location.websiteURL">{{location.websiteURL}}</a></li>
                     <li><img id="money" v-for="n in location.priceLevel" v-bind:key="n.priceLevel" src="@/assets/money.png"/></li>
-                    <div class="checkin-button" >
+                    <div id="checkin-button" >
                             <button v-on:click="checkIn()">
                         Check In
                       </button>
@@ -188,16 +187,45 @@ export default {
     z-index: 51;
     margin-top: 40px;
     display: grid;
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
     grid-template-columns: 1fr 2fr 2fr 1fr;
-    grid-template-rows: 4fr 3fr;
+    grid-template-rows: 3fr 2fr;
     grid-template-areas: 
         '. map directions .'
         '. details details .';
         
 }
 
+#floating-panel {
+  display: none;
+}
+
+/* #heading {
+  background-color: green;
+  border-radius: 10px;
+  grid-area: heading;
+  text-align: center;
+  box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
+  margin: 2px;
+  line-height: 45px;
+} */
+
+#heading {
+  background-image: url('../assets/nearby-tab-background.png');
+  text-align: center;
+  line-height: 0px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  width: 67%;
+  height: 40px;
+  position: fixed;
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
+  margin-top: -40px;
+  z-index: 55;
+}
 
 #map-container {
     
@@ -208,21 +236,19 @@ export default {
     grid-area: map;
     text-align: center;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
-    height:479px;
-    
+    height:455px;
+    margin: 2px;
 }
 
 #directions-box {
   z-index: 51;
   grid-area: directions;
   background-color: white;
-  height:479px;
+  height:455px;
   overflow-y:scroll;
+  border-radius: 10px;
+  margin: 2px;
   }
-
-
-
-
 
 /* #map {
     width: 100%;
@@ -237,6 +263,14 @@ export default {
     text-align: center;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
     opacity: 95%;
+    margin: 2px;
+    overflow-y:scroll;
+    height: 300px;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
 }
 
 .details-content ul {
@@ -245,6 +279,7 @@ export default {
 }
 
 .description {
+  margin-top: 15px;
   margin-bottom: 15px;
 }
 
@@ -257,12 +292,17 @@ export default {
   margin-top: 5px;
 }
 
+#checkin-button {
+  margin-top: 15px;
+  padding-top: 0px;
+}
 
-.checkin-button button{
+#checkin-button button{
   background-color: #5f0101;
   border: none;
   color: white;
   padding: 15px 32px;
+  margin-top: 0px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -270,7 +310,7 @@ export default {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-.checkin-button:hover button{
+#checkin-button:hover button{
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   cursor: pointer;
 }

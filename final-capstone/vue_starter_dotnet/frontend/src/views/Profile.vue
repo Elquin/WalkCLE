@@ -32,7 +32,31 @@
 </template>
 
 <script>
-
+export default {
+    data () {
+        return {
+            checkinHistory: []
+        }
+    },
+    methods: {
+        fetchCheckinHistory(){
+            fetch(`${process.env.VUE_APP_REMOTE_API}/checkin`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',         //remember to do
+                    Authorization: 'Bearer ' + auth.getToken(),  //remember to do
+                },
+                body: JSON.stringify(this.location),
+            })
+            .then((response) => {
+                if (response.ok) {
+                    //this.$router.push({ path: `/` });
+                }
+            })
+            .catch((err) => console.error(err));
+        }
+    }
+}
 
 </script>
 
