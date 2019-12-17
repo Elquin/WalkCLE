@@ -9,5 +9,6 @@ namespace SampleApi.DAL
     public interface ICheckinDAO
     {
         bool StoreCheckin(Checkin checkin);
+        List<string> GetCheckinHistory(int userId);
     }
 }

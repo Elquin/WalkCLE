@@ -62,7 +62,6 @@ export default {
     this.fetchUserLocation();
     // this.isHidden = false
     // this.createMap();
-    
   },
   methods: {
     checkIn(){
