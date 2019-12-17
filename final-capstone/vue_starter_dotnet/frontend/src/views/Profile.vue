@@ -10,6 +10,9 @@
         <div class="history-title"><h3>Location History</h3></div>
             <div class="history-content">
                 <ul>
+                    <li v-for="location in checkinHistory" v-bind:key="location">
+                        {{location}}
+                    </li>
                     <li>Location 1</li>
                     <li>Location 2</li>
                     <li>Location 3</li>
@@ -32,25 +35,33 @@
 </template>
 
 <script>
+import auth from '@/auth';
 export default {
     data () {
         return {
             checkinHistory: []
         }
     },
+    created() {
+        this.fetchCheckinHistory()
+    },
     methods: {
         fetchCheckinHistory(){
             fetch(`${process.env.VUE_APP_REMOTE_API}/checkin`, {
-                method: 'POST',
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',         //remember to do
                     Authorization: 'Bearer ' + auth.getToken(),  //remember to do
                 },
-                body: JSON.stringify(this.location),
             })
             .then((response) => {
                 if (response.ok) {
-                    //this.$router.push({ path: `/` });
+                    response.json().then(
+                        (data) => {
+                            this.checkinHistory = data;
+                            console.log(this.checkinHistory);
+                        }
+                    )
                 }
             })
             .catch((err) => console.error(err));
