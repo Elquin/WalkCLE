@@ -39,6 +39,8 @@ export default {
             let arr1 = this.closestLocationsList.filter(location => location.name.match(filter));
             let arr2 = this.closestLocationsList.filter(location => location.longDescription.match(filter));
             arr1 = arr1.concat(arr2);
+            // let arr3 =  this.closestLocationsList.filter(function(location) {return location.category.some(function(cat) {return cat.toLowerCase().contains(this.search.toLowerCase()); }); });
+            // let arr3 =  this.closestLocationsList.filter(function(location) {return location.category.some(function(cat) {return cat.includes(this.search); }); });
             // let arr3 = this.closestLocationsList.filter(location => location.category.foreach(cat => cat.match(filter)));
             // let arr3 = this.closestLocationsList.filter(location => location.category.filter(cat => cat.match(filter)));
             // arr1 = arr1.concat(arr3);
