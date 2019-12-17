@@ -27,9 +27,10 @@
                       <li><img class="icon" src="@/assets/icons/globe.png"/> <a :href="location.websiteURL">{{location.websiteURL}}</a></li>
                       <li><img id="money" v-for="n in location.priceLevel" v-bind:key="n.priceLevel" src="@/assets/money.png"/></li>
                       <div id="checkin-button" >
-                              <button v-on:click="checkIn()">
+                              <button v-on:click="checkIn()" v-if="!isHidden">
                           Check In
                         </button>
+                        <p v-show="isHidden">You checked into {{location.name}}</p>
                       </div>
                   </ul>
               </div>
