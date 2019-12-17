@@ -1,11 +1,13 @@
 <template>
   
   <div class="grid-container">
+    
+    <!-- DropDown not registering -->
     <div id="floating-panel">
     <b>Mode of Travel: </b>
     <select id="mode">
-      <option value="WALKING">Walking</option>
-      <option value="DRIVING">Driving</option>
+      <option value='WALKING'>Walking</option>
+      <option value='DRIVING'>Driving</option>
     </select>
     </div>
     <div id="map-container"></div>
@@ -41,17 +43,12 @@ export default {
     name: 'details-page',
     data() {
       return {
-        center: {  },
-        // markers: [{
-        //     position: {
-        //         lat: 41.503370,
-        //         lng: -81.639050
-        //     },
-        // }],
+        center: {},
         location: {},
         map: '',
         userLat: '',
-        userLong: ''
+        userLong: '',
+        locationAddress:''
       };
   },
   mounted () {
@@ -60,8 +57,9 @@ export default {
     // this.getLocation(this.$route.params.id);
   },
   created() {
+    // this.getLocation(this.$route.params.id);
     this.fetchUserLocation();
-    this.getLocation(this.$route.params.id);
+    
     // this.createMap();
     
   },
@@ -90,13 +88,6 @@ export default {
             {enableHighAccuracy: true,
             timeout: 5000,
             maximumAge: 0} )
-            // navigator.geolocation.getCurrentPosition(pos => {
-                // this.userLocation = pos;
-                // this.userLat = this.userLocation.coords.latitude;
-                // this.userLong = this.userLocation.coords.longitude;
-                // console.log('fetched location: ' + this.userLocation);
-                // console.log('fetched lat: ' + this.userLat);
-                // console.log('fetched long: ' + this.userLong);
             },
     error () {
       errorStr = err.message;
@@ -109,7 +100,8 @@ export default {
       console.log('fetched location: ' + this.userLocation);
       console.log('fetched lat: ' + this.userLat);
       console.log('fetched long: ' + this.userLong);
-      this.createMap();
+      this.getLocation(this.$route.params.id);
+      // this.createMap();
     },
     getLocation(id) {
         fetch(`${process.env.VUE_APP_REMOTE_API}/locations/${id}`)
@@ -119,6 +111,9 @@ export default {
               (data) => {
                 this.location = data;
                 console.log(this.location);
+                this.locationAddress = data.address;
+                console.log('Location Name 1: ' + this.locationAddress);
+                this.createMap();
               }
             )
           } else {
@@ -132,10 +127,8 @@ export default {
     },
     createMap () {
         // this.fetchUserLocation();
-        // const userLocation = new google.maps.LatLng(41.503370, -81.639050);
-        console.log('CreateMap User Lat: ' + this.userLat);
-        console.log('CreateMap User Long: ' + this.userLong);
         const userLocation = new google.maps.LatLng(this.userLat, this.userLong);
+        console.log('Location Name 2: ' + this.locationAddress);
         const directionsRenderer = new google.maps.DirectionsRenderer;
         const directionsService = new google.maps.DirectionsService;
 
@@ -143,7 +136,7 @@ export default {
             this.map = new google.maps.Map(document.getElementById('map-container'), {
             center: userLocation,
             scrollwheel: true,
-            zoom: 15,
+            zoom: 9,
             mapTypeControlOptions: {
               style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
               mapTypeIds: ['roadmap', 'satellite', 'hybrid', 'terrain']
@@ -154,20 +147,15 @@ export default {
         directionsRenderer.setPanel(document.getElementById('directions-box'));
         
         this.calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation);
-        document.getElementById('mode').addEventListener('change', function() {
-          this.calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation);
-        });
 
-        // const marker = new google.maps.Marker({
-        //   position: userLocation,
-        //   map: this.map,
-        //   animation: google.maps.Animation.DROP,
+        //Need to Fix
+        // document.getElementById('mode').addEventListener("change", function() {
+        //   this.calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation);
         // });
+
     },
     calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation){
-        // const destinationLatlng = 'Cleveland Botanical Garden';
-        console.log('Details Name: ' + location.name)
-        const destinationLatlng = 'Playhouse Square';
+        const destinationLatlng = this.locationAddress;
         const start = userLocation
         const end = destinationLatlng
         const selectedMode = document.getElementById('mode').value;
