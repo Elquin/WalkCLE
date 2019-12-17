@@ -4,7 +4,7 @@
         <div class="portrait-top">
             <img src="@/assets/user.png">
         </div>
-        <h3>Test Name</h3>
+        <h3>{{user.usernname}}</h3>
     </div>
     <div class="history-card">
         <div class="history-title"><h3>Location History</h3></div>
@@ -35,13 +35,35 @@ import auth from '@/auth';
 export default {
     data () {
         return {
-            checkinHistory: []
+            checkinHistory: [],
+            user: ""
         }
     },
     created() {
-        this.fetchCheckinHistory()
+        this.fetchCheckinHistory(),
+        this.fetchUsername()
     },
     methods: {
+        fetchUsername(){
+            fetch(`${process.env.VUE_APP_REMOTE_API}/values`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',         //remember to do
+                    Authorization: 'Bearer ' + auth.getToken(),  //remember to do
+                },
+            })
+            .then((response) => {
+                if (response.ok) {
+                    response.json().then(
+                        (data) => {
+                            this.user = data;
+                            console.log(this.user);
+                        }
+                    )
+                }
+            })
+            .catch((err) => console.error(err));
+        },
         fetchCheckinHistory(){
             fetch(`${process.env.VUE_APP_REMOTE_API}/checkin`, {
                 method: 'GET',
