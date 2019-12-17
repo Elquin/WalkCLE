@@ -1,38 +1,40 @@
 <template>
   
-  <div class="grid-container">
-    <div id="heading"><h3>{{location.name}}</h3></div>
-    <!-- DropDown not registering -->
-    <div id="floating-panel">
-    <b>Mode of Travel: </b>
-    <select id="mode">
-      <option value='WALKING'>Walking</option>
-      <option value='DRIVING'>Driving</option>
-    </select>
+  <div id="envelope">
+    <!-- <div id="cover"></div> -->
+    <div class="grid-container">
+      <div id="heading"><h3>{{location.name}}</h3></div>
+      <!-- DropDown not registering -->
+      <div id="floating-panel">
+      <b>Mode of Travel: </b>
+      <select id="mode">
+        <option value='WALKING'>Walking</option>
+        <option value='DRIVING'>Driving</option>
+      </select>
+      </div>
+      <div id="map-container"></div>
+      <div id="directions-box"></div>
+        <!-- <gmap-map id="map" :center="center" :zoom="13">
+              <gmap-marker v-for="m in markers" v-bind:key="m.position" :position="m.position"/>
+        </gmap-map>
+      </div> -->
+      <div class="details-card">
+              <div class="details-content">
+                  <ul id="details-list">
+                      <li class="description">{{location.longDescription}}</li>
+                      <li><img class="icon" src="@/assets/icons/marker.png"/> {{location.address}}</li>
+                      <li><img class="icon" src="@/assets/icons/phone.png"/> {{location.phoneNumber}}</li>
+                      <li><img class="icon" src="@/assets/icons/globe.png"/> <a :href="location.websiteURL">{{location.websiteURL}}</a></li>
+                      <li><img id="money" v-for="n in location.priceLevel" v-bind:key="n.priceLevel" src="@/assets/money.png"/></li>
+                      <div id="checkin-button" >
+                              <button v-on:click="checkIn()">
+                          Check In
+                        </button>
+                      </div>
+                  </ul>
+              </div>
+      </div>
     </div>
-    <div id="map-container"></div>
-    <div id="directions-box"></div>
-      <!-- <gmap-map id="map" :center="center" :zoom="13">
-            <gmap-marker v-for="m in markers" v-bind:key="m.position" :position="m.position"/>
-      </gmap-map>
-    </div> -->
-    <div class="details-card">
-            <div class="details-content">
-                <ul>
-                    <li class="description">{{location.longDescription}}</li>
-                    <li><img class="icon" src="@/assets/icons/marker.png"/> {{location.address}}</li>
-                    <li><img class="icon" src="@/assets/icons/phone.png"/> {{location.phoneNumber}}</li>
-                    <li><img class="icon" src="@/assets/icons/globe.png"/> <a :href="location.websiteURL">{{location.websiteURL}}</a></li>
-                    <li><img id="money" v-for="n in location.priceLevel" v-bind:key="n.priceLevel" src="@/assets/money.png"/></li>
-                    <div id="checkin-button" >
-                            <button v-on:click="checkIn()">
-                        Check In
-                      </button>
-                    </div>
-                </ul>
-            </div>
-    </div>
-    
   </div>
 </template>
 
@@ -185,8 +187,9 @@ export default {
 
 .grid-container {
     z-index: 51;
-    margin-top: 40px;
+    margin-top: 80px;
     display: grid;
+    -webkit-filter: drop-shadow(2px 2px 8px rgba(0,0,0,0.5));
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     grid-template-columns: 1fr 2fr 2fr 1fr;
@@ -201,14 +204,18 @@ export default {
   display: none;
 }
 
-/* #heading {
-  background-color: green;
-  border-radius: 10px;
-  grid-area: heading;
+/* #cover {
+  background-color: #f2f2f2;
   text-align: center;
-  box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
-  margin: 2px;
-  line-height: 45px;
+  line-height: 0px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  width: 70%;
+  height: 40px;
+  position: fixed;
+  margin-top: -80px;
+  z-index: 55;
 } */
 
 #heading {
@@ -221,7 +228,7 @@ export default {
   width: 67%;
   height: 40px;
   position: fixed;
-  border-radius: 5px 5px 5px 5px;
+  border-radius: 2px 2px 2px 2px;
   box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
   margin-top: -40px;
   z-index: 55;
@@ -232,12 +239,11 @@ export default {
     /* had to comment out z-index for drop-down to work; */
     /* z-index: 51; */
     background-color: white;
-    border-radius: 10px;
     grid-area: map;
     text-align: center;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
     height:455px;
-    margin: 2px;
+    margin: 0px; /* increase if you want spacing between grids */
 }
 
 #directions-box {
@@ -246,8 +252,7 @@ export default {
   background-color: white;
   height:455px;
   overflow-y:scroll;
-  border-radius: 10px;
-  margin: 2px;
+  margin: 0px;
   }
 
 /* #map {
@@ -258,14 +263,13 @@ export default {
 .details-card {
     z-index: 51;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 0px 0px 3px 3px;
     grid-area: details;
     text-align: center;
-    box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
-    opacity: 95%;
-    margin: 2px;
+    margin: 0px; /* increase if you want spacing between grids */
     overflow-y:scroll;
     height: 300px;
+    position:relative;
 }
 
 ::-webkit-scrollbar {
@@ -275,7 +279,12 @@ export default {
 
 .details-content ul {
     list-style-type: none;
-    padding-left: 0px;
+    width: 100%;
+    position:absolute; top:40%; height:10em; margin-top:-5em;
+}
+
+#details-list {
+  padding-left: 0px;
 }
 
 .description {
@@ -313,14 +322,18 @@ export default {
 #checkin-button:hover button{
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   cursor: pointer;
+  padding: 13px 29px;
 }
 
-
+#checkin-button:active button{
+  padding: 11px 27px;
+}
 
 .checkin-button {
   margin-top: 50px;
   padding-top: 50px;
 }
+
 #floating-panel {
         position: absolute;
         left: 25%;
