@@ -25,7 +25,7 @@
                     <li><img class="icon" src="@/assets/icons/phone.png"/> {{location.phoneNumber}}</li>
                     <li><img class="icon" src="@/assets/icons/globe.png"/> <a :href="location.websiteURL">{{location.websiteURL}}</a></li>
                     <li><img id="money" v-for="n in location.priceLevel" v-bind:key="n.priceLevel" src="@/assets/money.png"/></li>
-                    <div class="checkin-button" >
+                    <div id="checkin-button" >
                             <button v-on:click="checkIn()">
                         Check In
                       </button>
@@ -191,7 +191,7 @@ export default {
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     grid-template-columns: 1fr 2fr 2fr 1fr;
-    grid-template-rows: 3fr 3fr;
+    grid-template-rows: 3fr 2fr;
     grid-template-areas: 
         '. map directions .'
         '. details details .';
@@ -237,7 +237,7 @@ export default {
     grid-area: map;
     text-align: center;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
-    height:479px;
+    height:455px;
     margin: 2px;
 }
 
@@ -245,15 +245,11 @@ export default {
   z-index: 51;
   grid-area: directions;
   background-color: white;
-  height:479px;
+  height:455px;
   overflow-y:scroll;
   border-radius: 10px;
   margin: 2px;
   }
-
-
-
-
 
 /* #map {
     width: 100%;
@@ -269,6 +265,13 @@ export default {
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
     opacity: 95%;
     margin: 2px;
+    overflow-y:scroll;
+    height: 300px;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
 }
 
 .details-content ul {
@@ -289,12 +292,17 @@ export default {
   margin-top: 5px;
 }
 
+#checkin-button {
+  margin-top: 0px;
+  padding-top: 0px;
+}
 
-.checkin-button button{
+#checkin-button button{
   background-color: #5f0101;
   border: none;
   color: white;
   padding: 15px 32px;
+  margin-top: 0px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -302,7 +310,7 @@ export default {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
-.checkin-button:hover button{
+#checkin-button:hover button{
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   cursor: pointer;
 }
