@@ -1,7 +1,7 @@
 <template>
-  
   <div id="envelope">
     <!-- <div id="cover"></div> -->
+    
     <div class="grid-container">
       <div id="heading"><h3>{{location.name}}</h3></div>
       <!-- DropDown not registering -->
@@ -14,6 +14,7 @@
       </div>
       <div id="map-container"></div>
       <div id="directions-box"></div>
+      
         <!-- <gmap-map id="map" :center="center" :zoom="13">
               <gmap-marker v-for="m in markers" v-bind:key="m.position" :position="m.position"/>
         </gmap-map>
@@ -319,7 +320,7 @@ export default {
 #checkin-button p {
   color: white;
   background-color: green;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 #checkin-button button{
@@ -333,6 +334,7 @@ export default {
   display: inline-block;
   font-size: 16px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border-radius: 5px;
 }
 
 #checkin-button:hover button{
@@ -355,5 +357,5 @@ export default {
         text-align: center;
         font-family: 'Roboto','sans-serif';
         padding-left: 10px;
-      }
+}
 </style>
