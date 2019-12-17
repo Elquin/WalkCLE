@@ -1,7 +1,7 @@
 <template>
   <div class="flex-container">
       <router-link class="flex-item" v-for="location in filteredLocations" v-bind:key="location.name" tag="div" v-bind:to="{name:'LocationDetails', params: {id: location.id}}">
-      <div class="location-image"><img :src="'@/assets/locations/'+location.id+'jpg'"/></div>
+      <div class="location-image"><img :src="getImgUrl(location.id)"/></div>
           <ul>
            
               <li >
@@ -54,6 +54,9 @@ export default {
         this.fetchUserLocation();
     },
     methods: {
+      getImgUrl(locId){
+        return "@/assets/locations/" + locId + ".jpg";
+      },
       fetchUserLocation(){
             navigator.geolocation.getCurrentPosition(pos => {
                 this.userLocation = pos;
