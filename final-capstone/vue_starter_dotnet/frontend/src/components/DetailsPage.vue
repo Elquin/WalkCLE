@@ -1,7 +1,7 @@
 <template>
-  
   <div id="envelope">
     <!-- <div id="cover"></div> -->
+    
     <div class="grid-container">
       <div id="heading"><h3>{{location.name}}</h3></div>
       <!-- DropDown not registering -->
@@ -14,6 +14,7 @@
       </div>
       <div id="map-container"></div>
       <div id="directions-box"></div>
+      
         <!-- <gmap-map id="map" :center="center" :zoom="13">
               <gmap-marker v-for="m in markers" v-bind:key="m.position" :position="m.position"/>
         </gmap-map>
@@ -356,5 +357,5 @@ export default {
         text-align: center;
         font-family: 'Roboto','sans-serif';
         padding-left: 10px;
-      }
+}
 </style>
