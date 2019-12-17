@@ -35,29 +35,7 @@
               </div>
       </div>
     </div>
-    <div id="map-container"></div>
-    <div id="directions-box"></div>
-      <!-- <gmap-map id="map" :center="center" :zoom="13">
-            <gmap-marker v-for="m in markers" v-bind:key="m.position" :position="m.position"/>
-      </gmap-map>
-    </div> -->
-    <div class="details-card">
-            <div class="details-content">
-                <ul>
-                    <li class="description">{{location.longDescription}}</li>
-                    <li><img class="icon" src="@/assets/icons/marker.png"/> {{location.address}}</li>
-                    <li><img class="icon" src="@/assets/icons/phone.png"/> {{location.phoneNumber}}</li>
-                    <li><img class="icon" src="@/assets/icons/globe.png"/> <a :href="location.websiteURL">{{location.websiteURL}}</a></li>
-                    <li><img id="money" v-for="n in location.priceLevel" v-bind:key="n.priceLevel" src="@/assets/money.png"/></li>
-                    <div id="checkin-button" >
-                            <button id="checkin-message" v-on:click="checkIn()" v-if="!isHidden">
-                        Check In
-                      </button>
-                      <p v-if="isHidden">You checked in at {{location.name}}</p>
-                    </div>
-                </ul>
-            </div>
-    </div>
+    
     
   </div>
 </template>
