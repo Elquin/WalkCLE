@@ -91,6 +91,7 @@ export default {
     position:fixed; right:10px; top:10px;
     padding: 0px;
     width: 95px;
+    z-index: 101;
   }
 
   #nav #icon1 {
