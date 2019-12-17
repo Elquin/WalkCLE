@@ -59,8 +59,6 @@ where checkin.UserId = @userId";
                     {
                         string checkinDate = Convert.ToString(reader["CheckInDate"]);
                         checkinDate = checkinDate.Replace("12:00:00 AM", "");
-                        //int timeIndex = checkinDate.IndexOf("12:00") - 11;
-                        //checkinDate = checkinDate.Substring(0, timeIndex);
                         result.Add(Convert.ToString(reader["Name"]) + " " + checkinDate);
                     }
                 }
