@@ -211,7 +211,7 @@ export default {
 
     @media only screen and (max-width: 650px) {
       .cards {
-        margin-top: 12%;
+        margin-top: 20%;
       }
     }
 

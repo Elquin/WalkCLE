@@ -45,9 +45,9 @@ export default {
     margin: auto;
     left: 0;
     right: 0;
-    width: 42%;
+    width: 40.5%;
     position: fixed;
-    border-radius: 15px 15px 5px 5px;
+    border-radius: 0px 0px 2px 2px;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
     margin-top: -4px;
 

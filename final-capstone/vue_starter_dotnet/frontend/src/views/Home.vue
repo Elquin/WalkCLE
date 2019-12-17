@@ -29,7 +29,7 @@ export default {
     text-align: center;
     padding: 5px;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
-    border-radius: 10px;
+    border-radius: 2px;
   }
 
   .message-box > h1 {

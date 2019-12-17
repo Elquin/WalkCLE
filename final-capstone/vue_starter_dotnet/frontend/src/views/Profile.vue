@@ -73,8 +73,8 @@ export default {
 .grid-container {
     margin-top: 40px;
     display: grid;
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
+    grid-column-gap: 2px;
+    grid-row-gap: 2px;
     grid-template-columns: 1fr 2fr 2fr 1fr;
     grid-template-rows: 1fr 3fr;
     grid-template-areas: 
@@ -85,7 +85,7 @@ export default {
 
 .portrait {
     background-color: white;
-    border-radius: 10px;
+    border-radius: 2px;
     grid-area: portrait;
     text-align: center;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
@@ -96,7 +96,7 @@ export default {
     background-image: url('../assets/clevedt.jpg');
     background-size: 100%;
     background-position:bottom;
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 2px 2px 0px 0px;
 }
 
 .portrait-top > img {
@@ -109,7 +109,7 @@ export default {
 
 .history-card {
     background-image: url('../assets/map.png');
-    border-radius: 10px;
+    border-radius: 2px;
     grid-area: history;
     text-align: center;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
@@ -117,7 +117,7 @@ export default {
 }
 
 .history-title {
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 2px 2px 0px 0px;
     background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.733) 15%, rgb(255, 255, 255) 75%);
     padding: 2px 0px 2px 0px;
 }
@@ -125,7 +125,7 @@ export default {
 .history-content {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.733) 15%, rgb(255, 255, 255) 75%);
     height: 100%;
-    border-radius: 10px;
+    border-radius: 2px;
 }
 
 .history-content ul {
@@ -136,7 +136,7 @@ export default {
 
 .badges-card {
     background-image: url('../assets/trophybkgd.png');
-    border-radius: 10px;
+    border-radius: 2px;
     grid-area: badges;
     text-align: center;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
@@ -144,7 +144,7 @@ export default {
 }
 
 .badges-title {
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 2px 2px 0px 0px;
     background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.733) 15%, rgb(255, 255, 255) 75%);
     padding: 2px 0px 2px 0px;
 }
@@ -152,7 +152,7 @@ export default {
 .badges-content {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.733) 15%, rgb(255, 255, 255) 75%);
     height: 100%;
-    border-radius: 10px;
+    border-radius: 2px;
 }
 
 .badges-content ul {
