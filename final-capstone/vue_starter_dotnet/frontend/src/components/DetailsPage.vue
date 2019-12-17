@@ -1,7 +1,7 @@
 <template>
   
   <div class="grid-container">
-    
+    <div id="heading">{{location.name}}</div>
     <!-- DropDown not registering -->
     <div id="floating-panel">
     <b>Mode of Travel: </b>
@@ -188,16 +188,45 @@ export default {
     z-index: 51;
     margin-top: 40px;
     display: grid;
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
     grid-template-columns: 1fr 2fr 2fr 1fr;
-    grid-template-rows: 4fr 3fr;
+    grid-template-rows: 3fr 3fr;
     grid-template-areas: 
         '. map directions .'
         '. details details .';
         
 }
 
+#floating-panel {
+  display: none;
+}
+
+/* #heading {
+  background-color: green;
+  border-radius: 10px;
+  grid-area: heading;
+  text-align: center;
+  box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
+  margin: 2px;
+  line-height: 45px;
+} */
+
+#heading {
+  background-image: url('../assets/nearby-tab-background.png');
+  text-align: center;
+  line-height: 35px;
+  margin: auto;
+  left: 0;
+  right: 0;
+  width: 67%;
+  height: 40px;
+  position: fixed;
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
+  margin-top: -40px;
+  z-index: 55;
+}
 
 #map-container {
     
@@ -209,7 +238,7 @@ export default {
     text-align: center;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
     height:479px;
-    
+    margin: 2px;
 }
 
 #directions-box {
@@ -218,6 +247,8 @@ export default {
   background-color: white;
   height:479px;
   overflow-y:scroll;
+  border-radius: 10px;
+  margin: 2px;
   }
 
 
@@ -237,6 +268,7 @@ export default {
     text-align: center;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
     opacity: 95%;
+    margin: 2px;
 }
 
 .details-content ul {
@@ -245,7 +277,7 @@ export default {
 }
 
 .description {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .icon {
