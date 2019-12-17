@@ -1,7 +1,7 @@
 <template>
   
   <div class="grid-container">
-    <div id="heading">{{location.name}}</div>
+    <div id="heading"><h3>{{location.name}}</h3></div>
     <!-- DropDown not registering -->
     <div id="floating-panel">
     <b>Mode of Travel: </b>
@@ -17,7 +17,6 @@
       </gmap-map>
     </div> -->
     <div class="details-card">
-        <div class="location-title"><h3>{{location.name}}</h3></div>
             <div class="details-content">
                 <ul>
                     <li class="description">{{location.longDescription}}</li>
@@ -215,7 +214,7 @@ export default {
 #heading {
   background-image: url('../assets/nearby-tab-background.png');
   text-align: center;
-  line-height: 35px;
+  line-height: 0px;
   margin: auto;
   left: 0;
   right: 0;
@@ -280,7 +279,8 @@ export default {
 }
 
 .description {
-  margin-bottom: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .icon {
@@ -293,7 +293,7 @@ export default {
 }
 
 #checkin-button {
-  margin-top: 0px;
+  margin-top: 15px;
   padding-top: 0px;
 }
 
