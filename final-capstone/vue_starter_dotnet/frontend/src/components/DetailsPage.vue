@@ -4,8 +4,8 @@
     <div id="floating-panel">
     <b>Mode of Travel: </b>
     <select id="mode">
-      <option value="DRIVING">Driving</option>
       <option value="WALKING">Walking</option>
+      <option value="DRIVING">Driving</option>
     </select>
     </div>
     <div id="map-container"></div>
@@ -86,7 +86,8 @@ export default {
     },
     
     fetchUserLocation(){
-            navigator.geolocation.getCurrentPosition(this.locationSuccess, this.error, {enableHighAccuracy: true,
+            navigator.geolocation.getCurrentPosition(this.locationSuccess, this.error, 
+            {enableHighAccuracy: true,
             timeout: 5000,
             maximumAge: 0} )
             // navigator.geolocation.getCurrentPosition(pos => {
@@ -170,11 +171,12 @@ export default {
         const start = userLocation
         const end = destinationLatlng
         const selectedMode = document.getElementById('mode').value;
+        console.log('Selected: ' + selectedMode);
         directionsService.route({
           origin: start,
           destination: end,
           // travelMode: 'WALKING',
-          travelMode: google.maps.TravelMode[selectedMode],
+          travelMode: google.maps.TravelMode[selectedMode]
         }, function(response, status){
           if(status === 'OK') {
             directionsRenderer.setDirections(response);
@@ -210,7 +212,9 @@ export default {
 
 
 #map-container {
-    z-index: 51;
+    
+    /* had to comment out z-index for drop-down to work; */
+    /* z-index: 51; */
     background-color: white;
     border-radius: 10px;
     grid-area: map;
@@ -291,7 +295,6 @@ export default {
 }
 #floating-panel {
         position: absolute;
-        top: 10px;
         left: 25%;
         z-index: 5;
         background-color: #fff;
@@ -299,7 +302,6 @@ export default {
         border: 1px solid #999;
         text-align: center;
         font-family: 'Roboto','sans-serif';
-        line-height: 30px;
         padding-left: 10px;
       }
 </style>
