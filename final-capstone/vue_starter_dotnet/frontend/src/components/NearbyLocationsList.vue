@@ -1,7 +1,11 @@
 <template>
   <div class="flex-container">
       <router-link class="flex-item" v-for="location in filteredLocations" v-bind:key="location.name" tag="div" v-bind:to="{name:'LocationDetails', params: {id: location.id}}">
+<<<<<<< HEAD
       <div class="location-image"><img :src="getImgUrl(location.id)"/></div>
+=======
+      <div class="location-image"><img :src="require('../assets/locations/' + location.id + '.jpg')"/></div>
+>>>>>>> e4747cc76382b2272acee6034a30d20e9bbbf9fa
           <ul>
            
               <li >
@@ -39,13 +43,8 @@ export default {
             let arr1 = this.closestLocationsList.filter(location => location.name.match(filter));
             let arr2 = this.closestLocationsList.filter(location => location.longDescription.match(filter));
             arr1 = arr1.concat(arr2);
-            // let arr3 = this.closestLocationsList.filter(function(location) {return location.category.some(function(cat) {return cat.toLowerCase().contains(this.search.toLowerCase()); }); });
-            // let arr3 = this.closestLocationsList.filter(function(location) {return location.category.some(function(cat) {return cat === "Wildlife"}); });
-            // let arr3 = this.closestLocationsList.filter(function(location) {return location.category.some(cat => cat === "Wildlife"); });
-            // let arr3 = this.closestLocationsList.filter(function(location) {return location.category.some(function(cat) {return cat.includes(this.search); }); });
-            // let arr3 = this.closestLocationsList.filter(location => location.category.foreach(cat => cat.match(filter)));
-            // let arr3 = this.closestLocationsList.filter(location => location.category.filter(cat => cat.match(filter)));
-            // arr1 = arr1.concat(arr3);
+            let arr3 = this.closestLocationsList.filter(location => location.categories.some(cat => cat.match(filter)));
+            arr1 = arr1.concat(arr3);
             return Array.from(new Set(arr1));
       }
     },
