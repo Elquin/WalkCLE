@@ -38,5 +38,34 @@ namespace SampleApi.DAL
                 return false;
             }
         }
+
+        public List<string> GetCheckinHistory(int id)
+        {
+            List<string> result = new List<string>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string getCheckinHistory = @"select location.Name, checkin.CheckInDate from checkin
+join location on checkin.LocationId = Location.Id
+where checkin.UserId = @userId";
+
+                    SqlCommand cmd = new SqlCommand(getCheckinHistory, connection);
+                    cmd.Parameters.AddWithValue("@userId", id);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        result.Add(Convert.ToString(reader["Name"]) + " " + Convert.ToString(reader["CheckInDate"]));
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
     }
 }

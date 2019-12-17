@@ -38,7 +38,9 @@ namespace SampleApi.Controllers
         [Authorize]
         public IActionResult GetUserCheckinHistory()
         {
-            return Ok();
+            int userId = GetCurrentUserId();
+            List<string> result = checkinDao.GetCheckinHistory(userId);
+            return Ok(result);
         }
 
         private int GetCurrentUserId()
