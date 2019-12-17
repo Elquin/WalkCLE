@@ -129,13 +129,22 @@ export default {
     margin: 10px;
 }
 
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
 .history-card {
     background-image: url('../assets/map.png');
     border-radius: 2px;
     grid-area: history;
     text-align: center;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
-    opacity: 95%;
+    overflow-y:scroll;
+}
+
+#filler {
+    background-color: white;
 }
 
 .history-title {
@@ -145,14 +154,34 @@ export default {
 }
 
 .history-content {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.733) 15%, rgb(255, 255, 255) 75%);
+    /* background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.733) 15%, rgb(255, 255, 255) 75%); */
     height: 100%;
     border-radius: 2px;
+    color: black;
+    font-size: 20px;
 }
 
 .history-content ul {
     list-style-type: none;
     padding-left: 0px;
+}
+
+.history-content ul li {
+    background: rgb(255, 255, 255, 0.8);
+    line-height: 20px;
+    vertical-align: center;
+    height: 100%;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.history-content ul li:nth-child(odd) {
+    background: rgb(235, 235, 235, 0.8);
+    line-height: 20px;
+    vertical-align: center;
+    height: 100%;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 
 
@@ -162,7 +191,7 @@ export default {
     grid-area: badges;
     text-align: center;
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
-    opacity: 95%;
+    overflow-y:scroll;
 }
 
 .badges-title {
@@ -172,14 +201,33 @@ export default {
 }
 
 .badges-content {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.733) 15%, rgb(255, 255, 255) 75%);
     height: 100%;
     border-radius: 2px;
+    color: black;
+    font-size: 20px;
 }
 
 .badges-content ul {
     list-style-type: none;
     padding-left: 0px;
+}
+
+.badges-content ul li {
+    background: rgb(255, 255, 255, 0.8);
+    line-height: 20px;
+    vertical-align: center;
+    height: 100%;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.badges-content ul li:nth-child(odd) {
+    background: rgb(235, 235, 235, 0.8);
+    line-height: 20px;
+    vertical-align: center;
+    height: 100%;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 
 
