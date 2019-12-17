@@ -32,7 +32,18 @@
 </template>
 
 <script>
-
+export default{
+    data () {
+        return {
+            checkinHistory: []
+        }
+    },
+    methods: {
+        fetchCheckinHistory(){
+            
+        }
+    }
+}
 
 </script>
 
