@@ -24,13 +24,13 @@
                       <li class="description">{{location.longDescription}}</li>
                       <li><img class="icon" src="@/assets/icons/marker.png"/> {{location.address}}</li>
                       <li><img class="icon" src="@/assets/icons/phone.png"/> {{location.phoneNumber}}</li>
-                      <li><img class="icon" src="@/assets/icons/globe.png"/> <a :href="location.websiteURL">{{location.websiteURL}}</a></li>
+                      <li><img class="icon" src="@/assets/icons/globe.png"/> <a :href="location.websiteURL" target="_blank">{{location.websiteURL}}</a></li>
                       <li><img id="money" v-for="n in location.priceLevel" v-bind:key="n.priceLevel" src="@/assets/money.png"/></li>
                       <div id="checkin-button" >
                               <button v-on:click="checkIn()" v-if="!isHidden">
-                          Check In
+                          Check In 📍
                         </button>
-                        <p v-show="isHidden">You checked into {{location.name}}</p>
+                        <p v-show="isHidden">You checked into {{location.name}} ✔</p>
                       </div>
                   </ul>
               </div>
@@ -286,7 +286,7 @@ export default {
 .details-content ul {
     list-style-type: none;
     width: 100%;
-    position:absolute; top:40%; height:10em; margin-top:-5em;
+    position:absolute; top:25%; height:10em; margin-top:-5em;
 }
 
 #details-list {
@@ -296,6 +296,8 @@ export default {
 .description {
   margin-top: 15px;
   margin-bottom: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .icon {
@@ -310,6 +312,14 @@ export default {
 #checkin-button {
   margin-top: 15px;
   padding-top: 0px;
+  width: 150px;
+  margin: auto;
+}
+
+#checkin-button p {
+  color: white;
+  background-color: green;
+  border-radius: 15px;
 }
 
 #checkin-button button{
@@ -333,11 +343,6 @@ export default {
 
 #checkin-button:active button{
   padding: 11px 27px;
-}
-
-.checkin-button {
-  margin-top: 50px;
-  padding-top: 50px;
 }
 
 #floating-panel {
