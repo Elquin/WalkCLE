@@ -48,7 +48,8 @@ export default {
         map: '',
         userLat: '',
         userLong: '',
-        locationAddress:''
+        locationAddress:'',
+        checkedIn: false
       };
   },
   mounted () {
@@ -59,9 +60,7 @@ export default {
   created() {
     // this.getLocation(this.$route.params.id);
     this.fetchUserLocation();
-    
     // this.createMap();
-    
   },
   methods: {
     checkIn(){
