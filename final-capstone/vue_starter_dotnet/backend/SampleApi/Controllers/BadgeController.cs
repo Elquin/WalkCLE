@@ -24,7 +24,7 @@ namespace SampleApi.Controllers
         public IActionResult GetUserBadges()
         {
             int userId = GetCurrentUserId();
-            List<string> result = badgesDao.GetBadges(userId);
+            List<string> result = badgeDao.GetBadges(userId);
             return Ok(result);
         }
 

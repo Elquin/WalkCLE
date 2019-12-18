@@ -5,6 +5,7 @@
             <img src="@/assets/user.png">
         </div>
         <h3>{{user.usernname}}</h3>
+        <button v-on:click="logout()">Logout</button>
     </div>
     <div class="history-card">
         <div class="history-title"><h3>Location History</h3></div>
@@ -83,6 +84,10 @@ export default {
                 }
             })
             .catch((err) => console.error(err));
+        },
+        logout (){
+            window.localStorage.removeItem('Authorization');
+            this.$router.push('/');
         }
     }
 }
