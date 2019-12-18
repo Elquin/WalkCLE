@@ -23,6 +23,12 @@
               <div class="details-content">
                   <ul id="details-list">
                       <li class="description">{{location.longDescription}}</li>
+                      <li>
+                        <div id="image-1"><img class="photo" src="@/assets/icons/photo.png"/></div>
+                        <div id="image-2"><img class="photo" src="@/assets/icons/photo.png"/></div>
+                        <div id="image-3"><img class="photo" src="@/assets/icons/photo.png"/></div>
+                        
+                      </li>
                       <li><img class="icon" src="@/assets/icons/marker.png"/> {{location.address}}</li>
                       <li><img class="icon" src="@/assets/icons/phone.png"/> {{location.phoneNumber}}</li>
                       <li><img class="icon" src="@/assets/icons/globe.png"/> <a :href="location.websiteURL" target="_blank">{{location.websiteURL}}</a></li>
@@ -209,22 +215,7 @@ export default {
 
 #floating-panel {
   display: none;
-}
-
-/* #cover {
-  background-color: #f2f2f2;
-  text-align: center;
-  line-height: 0px;
-  margin: auto;
-  left: 0;
-  right: 0;
-  width: 70%;
-  height: 40px;
-  position: fixed;
-  margin-top: -80px;
-  z-index: 55;
-} */
-
+  }
 #heading {
   background-image: url('../assets/nearby-tab-background.png');
   text-align: center;
@@ -239,7 +230,7 @@ export default {
   box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
   margin-top: -40px;
   z-index: 55;
-}
+  }
 
 #map-container {
     
@@ -251,8 +242,7 @@ export default {
     box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
     height:455px;
     margin: 0px; /* increase if you want spacing between grids */
-}
-
+    }
 #directions-box {
   z-index: 51;
   grid-area: directions;
@@ -261,11 +251,6 @@ export default {
   overflow-y:scroll;
   margin: 0px;
   }
-
-/* #map {
-    width: 100%;
-    height: 100%;
-} */
 
 .details-card {
     z-index: 51;
@@ -277,51 +262,103 @@ export default {
     overflow-y:scroll;
     height: 300px;
     position:relative;
-}
-
+    }
 ::-webkit-scrollbar {
     width: 0px;
     background: transparent; /* make scrollbar transparent */
-}
-
+  }
 .details-content ul {
     list-style-type: none;
     width: 100%;
     position:absolute; top:25%; height:10em; margin-top:-5em;
-}
+  }
 
 #details-list {
   padding-left: 0px;
-}
+  }
 
 .description {
   margin-top: 15px;
   margin-bottom: 15px;
   margin-left: 5px;
   margin-right: 5px;
+  }
+
+#image-1 {
+  display: inline;
 }
+#image-1 .photo:hover {
+  height: 300px;
+  width: auto;
+  z-index: 100;
+  margin-top: -112px;
+  
+}
+#image-1 .photo:active {
+  width: 3%;
+  height: 3%;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#image-2 {
+  display: inline;
+}
+#image-2 .photo:hover {
+  height: 300px;
+  width: auto;
+  z-index: 100;
+  margin-top: -112px;
+  vertical-align: middle;
+}
+#image-2 .photo:active {
+  width: 3%;
+  height: 3%;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#image-3 {
+  display: inline;
+}
+#image-3 .photo:hover {
+  height: 300px;
+  width: auto;
+  z-index: 100;
+  margin-top: -112px;
+  vertical-align: middle;
+}
+#image-3 .photo:active {
+  width: 3%;
+  height: 3%;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.photo {
+  width: 3%;
+  margin-left: 5px;
+  margin-right: 5px;
+  }
 
 .icon {
   width: 20px;
-}
+  }
 
 #money {
   width: 30px;
   margin-top: 5px;
-}
+  }
 
 #checkin-button {
   margin-top: 15px;
   padding-top: 0px;
   width: 150px;
   margin: auto;
-}
+  }
 
 #checkin-button p {
   color: white;
   background-color: green;
   border-radius: 5px;
-}
+  }
 
 #checkin-button button{
   background-color: #5f0101;
@@ -335,17 +372,17 @@ export default {
   font-size: 16px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   border-radius: 5px;
-}
+  }
 
 #checkin-button:hover button{
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   cursor: pointer;
   padding: 13px 29px;
-}
+  }
 
 #checkin-button:active button{
   padding: 11px 27px;
-}
+  }
 
 #floating-panel {
         position: absolute;
@@ -357,5 +394,5 @@ export default {
         text-align: center;
         font-family: 'Roboto','sans-serif';
         padding-left: 10px;
-}
+  }
 </style>
