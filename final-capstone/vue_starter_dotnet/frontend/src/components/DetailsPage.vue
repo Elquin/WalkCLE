@@ -24,9 +24,15 @@
                   <ul id="details-list">
                       <li class="description">{{location.longDescription}}</li>
                       <li>
-                        <div id="image-1"><img class="photo" src="@/assets/icons/photo.png"/></div>
-                        <div id="image-2"><img class="photo" src="@/assets/icons/photo.png"/></div>
-                        <div id="image-3"><img class="photo" src="@/assets/icons/photo.png"/></div>
+                        <!-- <div id="image-1"><img class="photo" :src="imgSrc1(location.id)"/></div>
+                        <div id="image-2"><img class="photo" :src="imgSrc2(location.id)"/></div>
+                        <div id="image-3"><img class="photo" :src="imgSrc3(location.id)"/></div> -->
+                        <!-- <div id="image-1"><img class="photo" :src="require('@/assets/locations/' + 5 + '/1.jpg')"/></div>
+                        <div id="image-2"><img class="photo" :src="require('@/assets/locations/' + 5 + '/2.jpg')"/></div>
+                        <div id="image-3"><img class="photo" :src="require('@/assets/locations/' + 5 + '/3.jpg')"/></div> -->
+                        <div id="image-1"><img class="photo" src="https://rvca738f6h5tbwmj3mxylox3-wpengine.netdna-ssl.com/wp-content/uploads/2016/07/ClevelandMuseum_exterior.jpg"/></div>
+                        <div id="image-2"><img class="photo" src="@/assets/locations/5/2.jpg"/></div>
+                        <div id="image-3"><img class="photo" src="@/assets/locations/5/3.jpg"/></div>
                         
                       </li>
                       <li><img class="icon" src="@/assets/icons/marker.png"/> {{location.address}}</li>
@@ -60,7 +66,7 @@ export default {
         userLat: '',
         userLong: '',
         locationAddress:'',
-        isHidden: false
+        isHidden: false,
       };
   },
   mounted () {
@@ -75,6 +81,15 @@ export default {
     // this.createMap();
   },
   methods: {
+    imgSrc1(id){
+      return "@/assets/locations/" + id + "/1.jpg";
+    },
+    imgSrc2(id){
+      return "@/assets/locations/" + id + "/2.jpg";
+    },
+    imgSrc3(id){
+      return "@/assets/locations/" + id + "/3.jpg";
+    },
     checkIn(){
         this.location.locationId = this.location.id;
         this.isHidden = true;
