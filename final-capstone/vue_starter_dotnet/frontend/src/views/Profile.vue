@@ -193,6 +193,7 @@ export default {
 
 .history-card {
     background-image: url('../assets/map.png');
+    background-size:cover;
     border-radius: 2px;
     grid-area: history;
     text-align: center;
@@ -244,6 +245,7 @@ export default {
 
 .badges-card {
     background-image: url('../assets/trophybkgd.png');
+    background-size:cover;
     border-radius: 2px;
     grid-area: badges;
     text-align: center;
