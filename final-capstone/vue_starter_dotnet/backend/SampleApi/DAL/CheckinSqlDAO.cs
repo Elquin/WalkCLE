@@ -50,7 +50,8 @@ namespace SampleApi.DAL
 
                     string getCheckinHistory = @"select location.Name, checkin.CheckInDate from checkin
 join location on checkin.LocationId = Location.Id
-where checkin.UserId = @userId";
+where checkin.UserId = @userId
+order by CheckInDate desc";
 
                     SqlCommand cmd = new SqlCommand(getCheckinHistory, connection);
                     cmd.Parameters.AddWithValue("@userId", id);

@@ -26,7 +26,8 @@ namespace SampleApi.DAL
 
                     string getBadges = @"select badge.Name from userbadge
 join badge on userbadge.badgeid = badge.Id
-where userbadge.UserId = @userId";
+where userbadge.UserId = @userId
+order by CheckInDate desc";
 
                     SqlCommand cmd = new SqlCommand(getBadges, connection);
                     cmd.Parameters.AddWithValue("@userId", id);
