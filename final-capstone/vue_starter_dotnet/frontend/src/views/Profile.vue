@@ -20,10 +20,9 @@
         <div class="badges-title"><h3>Badges</h3></div>
             <div class="badges-content">
                 <ul>
-                    <li>Badge 1</li>
-                    <li>Badge 2</li>
-                    <li>Badge 3</li>
-                    <li>Badge 4</li>
+                    <li v-for="badge in badges" v-bind:key="badge">
+                        {{badge}}
+                    </li>
                 </ul>
             </div>
     </div>
@@ -36,7 +35,8 @@ export default {
     data () {
         return {
             checkinHistory: [],
-            user: ""
+            user: "",
+            badges: []
         }
     },
     created() {
@@ -78,11 +78,35 @@ export default {
                         (data) => {
                             this.checkinHistory = data;
                             console.log(this.checkinHistory);
+                            this.createBadges();
                         }
                     )
                 }
             })
             .catch((err) => console.error(err));
+        },
+        createBadges(){
+            let slicedCheckins = [];
+            for(let i = 0; i < this.checkinHistory.length; i++){
+                slicedCheckins.push(this.checkinHistory[i].slice(0, this.checkinHistory[i].length - 12));
+            }
+            let locationSet = new Set();
+            slicedCheckins.forEach(item => locationSet.add(item));
+            if (locationSet.size >= 1){
+                this.badges.unshift("First Checkin Badge");
+            }
+            if (locationSet.size >= 5){
+                this.badges.unshift("Amateur Tourist Badge. You've visited 5 unique locations. Keep walking for more badges!");
+            }
+            if (locationSet.size >= 10){
+                this.badges.unshift("Pro Tourist Badge. You've just gone pro with 10 unique locations. There's more badges so dont stop!");
+            }
+            if (locationSet.size >= 16){
+                this.badges.unshift("***Defender Of The Land*** You're the best of the best and have visited all our locations!");
+            }
+            console.log(slicedCheckins);
+            console.log(locationSet);
+            console.log(this.badges);
         }
     }
 }
