@@ -5,6 +5,7 @@
             <img src="@/assets/user.png">
         </div>
         <h3>{{user.usernname}}</h3>
+        <button id="logout" v-on:click="logout()"><img src="@/assets/logout.png"></button>
     </div>
     <div class="history-card">
         <div class="history-title"><h3>Location History</h3></div>
@@ -107,6 +108,10 @@ export default {
             console.log(slicedCheckins);
             console.log(locationSet);
             console.log(this.badges);
+        },
+        logout (){
+            window.localStorage.removeItem('Authorization');
+            this.$router.push('/');
         }
     }
 }
@@ -116,6 +121,34 @@ export default {
 
 <style scoped>
 /* #region Content */
+#logout {
+    background-color: maroon;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    position: fixed;
+    top: 360px;
+    right: 9px;
+    width: 95px;
+    height: 95px;
+    -webkit-filter: drop-shadow(4px 4px 25px rgba(0,0,0,0.5));
+}
+
+#logout > img {
+    width: 70%;
+}
+
+#logout:hover {
+    opacity: 60%;
+}
+
+#logout:active {
+    width: 90px;
+    height: 90px;
+    top: 362px;
+    right: 11px;
+  }
+
 .grid-container {
     margin-top: 40px;
     display: grid;
