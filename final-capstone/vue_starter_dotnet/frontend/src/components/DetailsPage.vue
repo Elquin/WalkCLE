@@ -356,6 +356,40 @@ export default {
   margin-left: 5px;
   margin-right: 5px;
 }
+#image-4 {
+  display: inline;
+}
+#image-4 .photo:hover {
+  height: 300px;
+  width: auto;
+  z-index: 100;
+  margin-top: -112px;
+  vertical-align: middle;
+  
+}
+#image-4 .photo:active {
+  width: 3%;
+  height: 3%;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#image-5 {
+  display: inline;
+}
+#image-5 .photo:hover {
+  height: 300px;
+  width: auto;
+  z-index: 100;
+  margin-top: -112px;
+  vertical-align: middle;
+  
+}
+#image-5 .photo:active {
+  width: 3%;
+  height: 3%;
+  margin-left: 5px;
+  margin-right: 5px;
+}
 .photo {
   width: 3%;
   margin-left: 5px;
