@@ -292,6 +292,7 @@ export default {
   width: auto;
   z-index: 100;
   margin-top: -112px;
+  vertical-align: middle;
   
 }
 #image-1 .photo:active {
