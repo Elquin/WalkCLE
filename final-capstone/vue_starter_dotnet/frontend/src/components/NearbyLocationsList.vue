@@ -9,6 +9,7 @@
                   <h3>{{location.name}}</h3>
                   <p>{{location.shortDescription}}</p>
                   <p>{{location.address}}</p>
+                  <p>{{Math.round(location.distanceFromUser)}} miles from your location</p>
                   
               </li>
              
