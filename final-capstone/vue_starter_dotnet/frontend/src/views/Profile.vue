@@ -103,10 +103,10 @@ export default {
     border-radius: 50px;
     cursor: pointer;
     position: fixed;
+    top: 360px;
     right: 9px;
     width: 95px;
     height: 95px;
-    margin-top: 18px;
     -webkit-filter: drop-shadow(4px 4px 25px rgba(0,0,0,0.5));
 }
 
@@ -117,6 +117,13 @@ export default {
 #logout:hover {
     opacity: 60%;
 }
+
+#logout:active {
+    width: 90px;
+    height: 90px;
+    top: 362px;
+    right: 11px;
+  }
 
 .grid-container {
     margin-top: 40px;

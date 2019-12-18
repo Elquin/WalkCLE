@@ -95,12 +95,27 @@ export default {
     text-align: right;
   }
 
+   #nav #icon1:active {
+    width: 96%;
+    padding-bottom: 4px;
+  }
+
   #nav #icon2 {
     text-align: right;
   }
 
+  #nav #icon2:active {
+    width: 96%;
+    padding-bottom: 4px;
+  }
+
   #nav #icon3 {
     text-align: right;
+  }
+
+  #nav #icon3:active {
+    width: 96%;
+    padding-bottom: 4px;
   }
 
   #nav .icons {
