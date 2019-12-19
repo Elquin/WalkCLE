@@ -5,7 +5,7 @@
             <img src="@/assets/user.png">
         </div>
         <h3>{{user.usernname}}</h3>
-        <button id="logout" v-on:click="logout()"><img src="@/assets/logout.png"></button>
+        <button id="logout" v-on:click="logout()"><img src="@/assets/logout.png"/></button>
     </div>
     <div class="history-card">
         <div class="history-title"><h3>Location History</h3></div>
@@ -95,15 +95,19 @@ export default {
             slicedCheckins.forEach(item => locationSet.add(item));
             if (locationSet.size >= 1){
                 this.badges.unshift("First Checkin Badge");
+                // <img src="@/assets/shield.svg"/>
             }
             if (locationSet.size >= 5){
                 this.badges.unshift("Amateur Tourist Badge. You've visited 5 unique locations. Keep walking for more badges!");
+                // <img src="@/assets/shield2.svg"/>
             }
             if (locationSet.size >= 10){
                 this.badges.unshift("Pro Tourist Badge. You've just gone pro with 10 unique locations. There's more badges so dont stop!");
+                // <img src="@/assets/shield3.svg"/>
             }
             if (locationSet.size >= 16){
                 this.badges.unshift("***Defender Of The Land*** You're the best of the best and have visited all our locations!");
+                // <img src="@/assets/shield-trophy.svg"/>
             }
             console.log(slicedCheckins);
             console.log(locationSet);
