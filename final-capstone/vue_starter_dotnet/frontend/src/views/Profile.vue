@@ -187,7 +187,9 @@ export default {
 }
 
 .portrait h3 {
-    margin: 10px;
+    margin: 0px;
+    padding: 10px;
+    background-image: url('../assets/map.png');
 }
 
 ::-webkit-scrollbar {
@@ -211,8 +213,20 @@ export default {
 
 .history-title {
     border-radius: 2px 2px 0px 0px;
-    background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.733) 15%, rgb(255, 255, 255) 75%);
+    background-image: url('../assets/blue-bkgrd.jpg');
     padding: 2px 0px 2px 0px;
+    margin: 0px;
+}
+
+.history-title h3 {
+    margin: 6px;
+    font-size: 26px;
+    color: white;
+    text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
 }
 
 .history-content {
@@ -226,6 +240,7 @@ export default {
 .history-content ul {
     list-style-type: none;
     padding-left: 0px;
+    margin: 0px;
 }
 
 .history-content ul li {
@@ -258,8 +273,21 @@ export default {
 
 .badges-title {
     border-radius: 2px 2px 0px 0px;
-    background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.733) 15%, rgb(255, 255, 255) 75%);
+    background-image: url('../assets/green-bkgrd.jpg');
+    background-position: center;
     padding: 2px 0px 2px 0px;
+    margin: 0px;
+}
+
+.badges-title h3 {
+    margin: 6px;
+    font-size: 26px;
+    color: white;
+    text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
 }
 
 .badges-content {
@@ -272,14 +300,16 @@ export default {
 .badges-content ul {
     list-style-type: none;
     padding-left: 0px;
+    margin: 0px;
 }
 
 .badges-content ul li {
     background: rgb(255, 255, 255, 0.8);
     height: 60px;
-    vertical-align: center;
+    vertical-align: middle;
     padding-right: 80px;
-    padding-top: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .badges-content ul li:nth-child(odd) {

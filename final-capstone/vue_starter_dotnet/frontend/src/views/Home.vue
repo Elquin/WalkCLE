@@ -34,6 +34,16 @@ export default {
 
   .message-box > h1 {
     color: #607c85;
+    margin-bottom: 0px;
+  }
+
+  .message-box > h3 {
+    margin-bottom: 0px;
+    margin-top: 10px;
+  }
+
+  .message-box > p {
+    margin-top: 0px;
   }
 
   .nearby-button {
