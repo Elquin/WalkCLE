@@ -239,7 +239,6 @@ export default {
 
 .history-content ul li:nth-child(odd) {
     background: rgb(235, 235, 235, 0.8);
-    line-height: 20px;
     vertical-align: center;
     height: 100%;
     padding-bottom: 5px;
@@ -267,7 +266,7 @@ export default {
     height: 100%;
     border-radius: 2px;
     color: black;
-    font-size: 20px;
+    font-size:inherit;
 }
 
 .badges-content ul {
@@ -279,40 +278,49 @@ export default {
     background: rgb(255, 255, 255, 0.8);
     height: 60px;
     vertical-align: center;
-    padding-right: 60px;
+    padding-right: 80px;
+    padding-top: 20px;
 }
 
 .badges-content ul li:nth-child(odd) {
     background: rgb(235, 235, 235, 0.8);
+    vertical-align: center;
 }
 
 .badges-content ul li:nth-last-child(1) {
   background-image: url('../assets/shield-2.svg');
   background-repeat: no-repeat;
   background-position-x:right;
-  height: 100%;
-  padding-top: 25px;
+  background-size:contain;
+  height: 60px;
+  vertical-align: center;
 }
 
 .badges-content ul li:nth-last-child(2) {
   background-image: url('../assets/shield-2.svg');
   background-repeat: no-repeat;
   background-position-x:right;
-  height: 100%;
+  background-size:contain;
+  height: 60px;
+  vertical-align: center;
 }
 
 .badges-content ul li:nth-last-child(3) {
   background-image: url('../assets/shield-2.svg');
   background-repeat: no-repeat;
   background-position-x:right;
+  background-size:contain;
   height: 60px;
+  vertical-align: center;
 }
 
 .badges-content ul li:nth-last-child(4) {
   background-image: url('../assets/shield-trophy.svg');
   background-repeat: no-repeat;
   background-position-x:right;
+  background-size:contain;
   height: 60px;
+  vertical-align: center;
 }
 
 
