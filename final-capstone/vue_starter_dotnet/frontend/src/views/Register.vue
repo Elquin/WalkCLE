@@ -1,12 +1,13 @@
 <template>
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
+      <div id="icon"><img src="@/assets/pencil.svg"/></div>
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         There were problems registering this user.
       </div>
       <div id="username-block">
-        <label for="username" class="sr-only">Username </label>
+        <label for="username" class="sr-only"></label>
         <input
           type="text"
           id="username"
@@ -19,7 +20,7 @@
       </div>
       <div id="password-block">
         <div id="password-input">
-          <label for="password" class="sr-only">Password </label>
+          <label for="password" class="sr-only"></label>
           <input
             type="password"
             id="password"
@@ -30,7 +31,7 @@
           />
         </div>
         <div id="password-confirm">
-          <label for="confirmPassword" class="sr-only">Password </label>
+          <label for="confirmPassword" class="sr-only"></label>
           <input
             type="password"
             id="confirmPassword"
@@ -41,12 +42,12 @@
           />
         </div>
       </div>
-      <router-link class="register-link" :to="{ name: 'login' }">
-        Have an account?
-      </router-link>
       <button id="create-button" class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
+      <router-link class="register-link" :to="{ name: 'login' }">
+        Have an account?
+      </router-link>
     </form>
   </div>
 </template>
@@ -100,7 +101,7 @@ export default {
       padding: 25px;
       display: flex;
       box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
-      border-radius: 10px;
+      border-radius: 3px;
       margin: 180px auto 0px auto;
       
     }
@@ -127,6 +128,7 @@ export default {
 
     #password-confirm {
       display: block;
+      margin-top: 5px;
     }
 
     .register-link {
@@ -137,6 +139,10 @@ export default {
     #create-button button {
       display: block;
       text-align: center;
+    }
+
+    #create-button {
+      width: 88%;
     }
 
     .alert {

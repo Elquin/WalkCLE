@@ -277,20 +277,42 @@ export default {
 
 .badges-content ul li {
     background: rgb(255, 255, 255, 0.8);
-    line-height: 20px;
+    height: 60px;
     vertical-align: center;
-    height: 100%;
-    padding-bottom: 5px;
-    padding-top: 5px;
+    padding-right: 60px;
 }
 
 .badges-content ul li:nth-child(odd) {
     background: rgb(235, 235, 235, 0.8);
-    line-height: 20px;
-    vertical-align: center;
-    height: 100%;
-    padding-bottom: 5px;
-    padding-top: 5px;
+}
+
+.badges-content ul li:nth-last-child(1) {
+  background-image: url('../assets/shield-2.svg');
+  background-repeat: no-repeat;
+  background-position-x:right;
+  height: 100%;
+  padding-top: 25px;
+}
+
+.badges-content ul li:nth-last-child(2) {
+  background-image: url('../assets/shield-2.svg');
+  background-repeat: no-repeat;
+  background-position-x:right;
+  height: 85px;
+}
+
+.badges-content ul li:nth-last-child(3) {
+  background-image: url('../assets/shield-2.svg');
+  background-repeat: no-repeat;
+  background-position-x:right;
+  height: 60px;
+}
+
+.badges-content ul li:nth-last-child(4) {
+  background-image: url('../assets/shield-trophy.svg');
+  background-repeat: no-repeat;
+  background-position-x:right;
+  height: 60px;
 }
 
 

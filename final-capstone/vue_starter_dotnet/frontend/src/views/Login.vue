@@ -1,6 +1,7 @@
 <template>
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
+      <div id="icon"><img src="@/assets/user.png"/></div>
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username and password!
@@ -9,7 +10,7 @@
         Thank you for registering, please sign in.
       </div>
       <div id="username-block">
-        <label for="username" class="sr-only">Username </label>
+        <label for="username" class="sr-only"></label>
         <input
           type="text"
           id="username"
@@ -21,7 +22,7 @@
         />
       </div>
       <div id="password-block">
-        <label for="password" class="sr-only">Password </label>
+        <label for="password" class="sr-only"></label>
         <input
           type="password"
           id="password"
@@ -31,8 +32,8 @@
           required
         />
       </div>
-      <router-link class="register-link" :to="{ name: 'register' }">Need an account?</router-link>
       <button id="submit-button" type="submit">Sign in</button>
+      <router-link class="register-link" :to="{ name: 'register' }">Need an account?</router-link>
     </form>
   </div>
 </template>
@@ -75,8 +76,8 @@ export default {
               token = token.replace(/"/g, '');
             }
             auth.saveToken(token);
-            //this.$router.push('/');
-            this.$router.go(-1); // after logging in, takes you to the previous page
+            this.$router.push('/profile');
+            // this.$router.go(-1); // after logging in, takes you to the previous page
           }
         })
         .catch((err) => console.error(err));
@@ -96,9 +97,15 @@ export default {
       padding: 25px;
       display: flex;
       box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
-      border-radius: 10px;
+      border-radius: 3px;
       margin: 180px auto 0px auto;
       
+    }
+
+    #icon img {
+      width: 80px;
+      margin-top: -40px;
+      -webkit-filter: drop-shadow(5px 5px 6px rgba(0,0,0,0.5));
     }
 
     form {
@@ -110,21 +117,71 @@ export default {
     }
 
     #username-block {
-      text-align: right;
+      text-align: center;
+    }
+
+    #username-block input::placeholder {
+      color: black;
+      text-align: center;
+    }
+
+    input[type=text] {
+      background-color: rgb(206, 206, 206);
+      color: black;
+      border: none;
+      padding: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
+      border-radius: 2px;
+      text-align: center;
     }
 
     #password-block {
-      text-align: right;
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    #password-block input::placeholder {
+      color: black;
+      text-align: center;
+    }
+
+    input[type=password] {
+      background-color: rgb(206, 206, 206);
+      color: black;
+      border: none;
+      padding: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
+      border-radius: 2px;
+      text-align: center;
     }
 
     .register-link {
       display: block;
       text-align: center;
+      margin-top: 15px;
     }
 
     #submit-button button {
       display: block;
+    }
+
+    button[type=submit] {
+      display: inline-block;
+      width: 98%;
+      margin-top: 6px;
+      padding: 10px 25px;
+      font-size: 16px;
+      cursor: pointer;
       text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #fff;
+      background-color: rgb(57, 135, 236);
+      border: none;
+      border-radius: 2px;
+      box-shadow: 2px 2px rgb(13, 61, 122);
     }
 
     .alert {
