@@ -298,7 +298,7 @@ export default {
   background-image: url('../assets/shield-2.svg');
   background-repeat: no-repeat;
   background-position-x:right;
-  height: 85px;
+  height: 100%;
 }
 
 .badges-content ul li:nth-last-child(3) {
