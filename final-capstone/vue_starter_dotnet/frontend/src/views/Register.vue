@@ -106,6 +106,12 @@ export default {
       
     }
 
+    #icon img {
+      width: 80px;
+      margin-top: -40px;
+      -webkit-filter: drop-shadow(5px 5px 6px rgba(0,0,0,0.5));
+    }
+
     form {
       text-align: center;
     }
@@ -118,22 +124,60 @@ export default {
       text-align: right;
     }
 
-    #password-block {
-      text-align: right;
+    #username-block input::placeholder {
+      color: black;
+      text-align: center;
     }
 
-    #password-input {
-      display: inline;
+    #username-block .form-control {
+      width: 86%;
+    }
+
+    input[type=text] {
+      background-color: rgb(206, 206, 206);
+      color: black;
+      border: none;
+      padding: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
+      border-radius: 2px;
+      text-align: center;
+    }
+
+    #password-block {
+      text-align: right;
+      margin-top: 5px;
+    }
+
+    #password-block input::placeholder {
+      color: black;
+      text-align: center;
+    }
+
+    #password-block .form-control {
+      width: 86%;
+    }
+
+    input[type=password] {
+      background-color: rgb(206, 206, 206);
+      color: black;
+      border: none;
+      padding: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
+      border-radius: 2px;
+      text-align: center;
     }
 
     #password-confirm {
-      display: block;
+      text-align: center;
       margin-top: 5px;
     }
 
     .register-link {
       display: block;
       text-align: center;
+      margin-top: 15px;
     }
 
     #create-button button {
@@ -141,12 +185,34 @@ export default {
       text-align: center;
     }
 
-    #create-button {
-      width: 88%;
+    #create-button button {
+      display: block;
+    }
+
+    button[type=submit] {
+      display: inline-block;
+      width: 98%;
+      margin-top: 6px;
+      padding: 10px 25px;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #fff;
+      background-color: rgb(57, 135, 236);
+      border: none;
+      border-radius: 2px;
+      box-shadow: 2px 2px rgb(13, 61, 122);
     }
 
     .alert {
       color: red;
+    }
+
+    .alert-success {
+      color: green;
+      font-style: italic;
     }
 
     a {}
