@@ -318,7 +318,7 @@ export default {
 }
 
 .badges-content ul li:nth-last-child(1) {
-  background-image: url('../assets/shield-2.svg');
+  background-image: url('../assets/shield1.svg');
   background-repeat: no-repeat;
   background-position-x:right;
   background-size:contain;
@@ -327,7 +327,7 @@ export default {
 }
 
 .badges-content ul li:nth-last-child(2) {
-  background-image: url('../assets/shield-2.svg');
+  background-image: url('../assets/shield2.svg');
   background-repeat: no-repeat;
   background-position-x:right;
   background-size:contain;
@@ -336,7 +336,7 @@ export default {
 }
 
 .badges-content ul li:nth-last-child(3) {
-  background-image: url('../assets/shield-2.svg');
+  background-image: url('../assets/shield3.svg');
   background-repeat: no-repeat;
   background-position-x:right;
   background-size:contain;
@@ -345,7 +345,7 @@ export default {
 }
 
 .badges-content ul li:nth-last-child(4) {
-  background-image: url('../assets/shield-trophy.svg');
+  background-image: url('../assets/shield4.svg');
   background-repeat: no-repeat;
   background-position-x:right;
   background-size:contain;
