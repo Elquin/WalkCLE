@@ -98,7 +98,7 @@ export default {
       display: flex;
       box-shadow: 7px 7px 15px 0px  rgba(0,0,0,0.3);
       border-radius: 3px;
-      margin: 180px auto 0px auto;
+      margin: 100px auto 0px auto;
       
     }
 
